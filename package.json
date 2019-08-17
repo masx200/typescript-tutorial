@@ -1,0 +1,16 @@
+{
+    "name": "typescript-tutorial",
+    "version": "1.0.0",
+    "description": "TypeScript 入门教程 从 JavaScript 程序员的角度总结思考，循序渐进的理解 TypeScript",
+    "main": "index.js",
+    "directories": {},
+    "scripts": {},
+    "repository": "git+https://github.com/masx200/typescript-tutorial.git",
+    "keywords": [],
+    "author": "masx200 <34191203+masx200@users.noreply.github.com>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/masx200/typescript-tutorial/issues"
+    },
+    "homepage": "https://github.com/masx200/typescript-tutorial#readme"
+}

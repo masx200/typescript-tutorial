@@ -1,5 +1,9 @@
 # TypeScript 入门教程
 
+原作者仓库
+
+https://github.com/xcatliu/typescript-tutorial
+
 [![Build Status](https://travis-ci.org/xcatliu/typescript-tutorial.svg?branch=master)](https://travis-ci.org/xcatliu/typescript-tutorial) [![Greenkeeper badge](https://badges.greenkeeper.io/xcatliu/typescript-tutorial.svg)](https://greenkeeper.io/)
 
 从 JavaScript 程序员的角度总结思考，循序渐进的理解 TypeScript。
@@ -8,13 +12,13 @@
 
 - [在线阅读](https://ts.xcatliu.com/)（部署在 [GitBook](https://www.gitbook.com/book/xcatliu/typescript-tutorial/details) 上，可能需要翻墙）
 - [在线阅读（GitHub 版）](https://github.com/xcatliu/typescript-tutorial/blob/master/README.md)
-- [GitHub 地址][GitHub]
+- [GitHub 地址][github]
 - 作者：[xcatliu](https://github.com/xcatliu/)
 - 官方 QQ 群：[加入 QQ 群 767142358](https://jq.qq.com/?_wv=1027&k=5nkkFCl)
 
 本书是作者在学习 [TypeScript] 后整理的学习笔记。
 
-随着对 TypeScript 理解的加深和 TypeScript 社区的发展，本书也会做出相应的更新，欢迎大家 [Star 收藏][GitHub]。
+随着对 TypeScript 理解的加深和 TypeScript 社区的发展，本书也会做出相应的更新，欢迎大家 [Star 收藏][github]。
 
 - 发现文章内容有问题，可以直接在页面下方评论
 - 对项目的建议，可以[提交 issue](https://github.com/xcatliu/typescript-tutorial/issues/new) 向作者反馈
@@ -22,7 +26,7 @@
 
 ## 为什么要写本书
 
-TypeScript 虽然有[官方手册][Handbook]及其[非官方中文版][中文手册]，但是它每一章都希望能详尽的描述一个概念，导致前面的章节就会包含很多后面才会学习到的内容，而有些本该一开始就了解的基础知识却在后面才会涉及。如果是初学者，可能需要阅读多次才能理解。所以它更适合用来查阅，而不是学习。
+TypeScript 虽然有[官方手册][handbook]及其[非官方中文版][中文手册]，但是它每一章都希望能详尽的描述一个概念，导致前面的章节就会包含很多后面才会学习到的内容，而有些本该一开始就了解的基础知识却在后面才会涉及。如果是初学者，可能需要阅读多次才能理解。所以它更适合用来查阅，而不是学习。
 
 与官方手册不同，本书着重于从 JavaScript 程序员的角度总结思考，循序渐进的理解 TypeScript，希望能给大家一些帮助和启示。
 
@@ -96,7 +100,7 @@ TypeScript 虽然有[官方手册][Handbook]及其[非官方中文版][中文手
 
 ## 相关资料
 
-- [TypeScript 官网][TypeScript]
+- [TypeScript 官网][typescript]
 - [Handbook]（[中文版][中文手册]）
 - [ECMAScript 6 入门]
 
@@ -104,8 +108,8 @@ TypeScript 虽然有[官方手册][Handbook]及其[非官方中文版][中文手
 
 - [下一章：简介](introduction/README.md)
 
-[GitHub]: https://github.com/xcatliu/typescript-tutorial
-[TypeScript]: http://www.typescriptlang.org/
-[Handbook]: http://www.typescriptlang.org/docs/handbook/basic-types.html
+[github]: https://github.com/xcatliu/typescript-tutorial
+[typescript]: http://www.typescriptlang.org/
+[handbook]: http://www.typescriptlang.org/docs/handbook/basic-types.html
 [中文手册]: https://zhongsp.gitbooks.io/typescript-handbook/content/
-[ECMAScript 6 入门]: http://es6.ruanyifeng.com/
+[ecmascript 6 入门]: http://es6.ruanyifeng.com/
