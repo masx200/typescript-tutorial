@@ -1,0 +1,38 @@
+* {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -o-user-select: text;
+  user-select: text;
+}
+body,
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  font-family: "Microsoft Yahei,PingFangSC-Regular,arial, verdana, sans-serif";
+}
+
+code {
+  overflow: auto;
+}
+
+#collapsibleNavbar,
+#my导航栏 {
+  overflow: auto;
+  max-height: 100%;
+}
+
+* {
+  -webkit-user-select: text !important;
+  -moz-user-select: text;
+  -o-user-select: text;
+  user-select: text !important;
+}
+/* </style>
+<style> */
+* {
+  font-family: "Microsoft Yahei", Helvetica, Tahoma, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei",
+    sans-serif !important;
+}

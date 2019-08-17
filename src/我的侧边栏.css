@@ -1,0 +1,99 @@
+#content {
+  text-align: center !important;
+}
+@media (max-width: 550px) {
+  /* 宽度小 */
+
+  #mynewsidelan {
+    width: 100%;
+  }
+
+  /* button.navbar-toggler[data-target="#collapsibleNavbar"] {
+    display: inline-block !important;
+  }*/
+  /* div#collapsibleNavbar.collapse.navbar-collapse {
+    display: none !important;
+  }
+  div#collapsibleNavbar.collapse.navbar-collapse.show {
+    display: flex !important;
+  } */
+  #cebianlan {
+    width: 100%;
+    /* display: none; */
+  }
+  /* #cebianlantoggle {
+    display: none;
+  } */
+}
+#cebianlan {
+  overflow: auto;
+  max-height: 93%;
+}
+#mynewsidelan {
+  overflow: auto;
+}
+#cebianlantoggle {
+  display: inline-block;
+}
+@media (min-width: 550px) {
+  /*宽度 大 */
+
+  #mynewsidelan {
+    width: 300px;
+  }
+  /* button.navbar-toggler[data-target="#collapsibleNavbar"] {
+    display: none !important;
+  } */
+  /* div#collapsibleNavbar.collapse.navbar-collapse {
+    display: none !important;
+  } */
+
+  #cebianlan {
+    display: inline-block;
+  }
+  #cebianlantoggle {
+    display: inline-block;
+  }
+}
+
+.el-container {
+  margin-bottom: 40px;
+}
+
+.el-aside {
+  /* background-color: #d3dce6; */
+  color: #333;
+  text-align: center;
+  line-height: 30px;
+}
+h5#markdownurlsrc {
+  padding: 3px 3px;
+  color: #007aff;
+  border-radius: 3px;
+  border: 1px solid #007aff;
+  /* position: relative !important; */
+  max-width: 95%;
+  display: block !important;
+  text-align: center !important;
+}
+button.btn.btn-outline-primary.clipbutton {
+  /* mui中设置按钮 relative导致按钮前置?*/
+  position: static !important;
+}
+* {
+  transition-property: all;
+  transition-duration: 0s !important;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
+#content li {
+  text-align: center !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center !important;
+}
