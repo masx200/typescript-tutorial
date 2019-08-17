@@ -18,6 +18,7 @@
     },
     "homepage": "https://github.com/masx200/typescript-tutorial#readme",
     "dependencies": {
+        "jquery": "^3.4.1",
         "webpack-react-vue-spa-awesome-config": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git"
     }
 }
