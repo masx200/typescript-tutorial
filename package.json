@@ -16,5 +16,8 @@
     "bugs": {
         "url": "https://github.com/masx200/typescript-tutorial/issues"
     },
-    "homepage": "https://github.com/masx200/typescript-tutorial#readme"
+    "homepage": "https://github.com/masx200/typescript-tutorial#readme",
+    "dependencies": {
+        "webpack-react-vue-spa-awesome-config": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git"
+    }
 }
