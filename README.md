@@ -1,8 +1,13 @@
-# TypeScript 入门教程
+# 轻量级 markdown 阅读器
+
 
 原作者仓库
 
 https://github.com/xcatliu/typescript-tutorial
+
+# TypeScript 入门教程
+
+
 
 [![Build Status](https://travis-ci.org/xcatliu/typescript-tutorial.svg?branch=master)](https://travis-ci.org/xcatliu/typescript-tutorial) [![Greenkeeper badge](https://badges.greenkeeper.io/xcatliu/typescript-tutorial.svg)](https://greenkeeper.io/)
 
