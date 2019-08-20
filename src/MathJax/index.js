@@ -1,4 +1,4 @@
-require("./extensionsMathMenu");
-require("./extensionsMathZoom");
-// import a from "./MathJax.js";
-module.exports = require("./MathJax.js");
+import "./extensionsMathMenu";
+import "./extensionsMathZoom";
+import a from "./MathJax.js";
+export default a; //require("./MathJax.js").default;

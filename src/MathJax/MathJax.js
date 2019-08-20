@@ -3739,4 +3739,4 @@ if (document.getElementById && document.childNodes && document.createElement) {
     })("MathJax");
   }
 }
-module.exports = MathJax;
+module.exports= MathJax;

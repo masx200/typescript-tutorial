@@ -1,14 +1,14 @@
 {
     "name": "typescript-tutorial",
-    "version": "1.0.0",
+    "version": "2.0.0",
+    "scripts": {
+        "start": "webpack-react-vue-spa-awesome-config start",
+        "build": "webpack-react-vue-spa-awesome-config build   --output-public-path=https://cdn.jsdelivr.net/gh/masx200/typescript-tutorial@2.0.0/ ",
+        "test": "webpack-react-vue-spa-awesome-config build"
+    },
     "description": "TypeScript 入门教程 从 JavaScript 程序员的角度总结思考，循序渐进的理解 TypeScript",
     "main": "index.js",
     "directories": {},
-    "scripts": {
-        "start": "webpack-react-vue-spa-awesome-config start",
-        "build": "webpack-react-vue-spa-awesome-config build   --output-public-path=https://cdn.jsdelivr.net/gh/masx200/typescript-tutorial@1.0.0/ ",
-        "test": "webpack-react-vue-spa-awesome-config build"
-    },
     "repository": "git+https://github.com/masx200/typescript-tutorial.git",
     "keywords": [],
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
@@ -18,6 +18,10 @@
     },
     "homepage": "https://github.com/masx200/typescript-tutorial#readme",
     "dependencies": {
+        "babel-eslint": "^10.0.2",
+        "eslint": "^6.0.1",
+        "eslint-plugin-vue": "^5.2.3",
+        "vue": "^2.6.10",
         "jquery": "^3.4.1",
         "webpack-react-vue-spa-awesome-config": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git"
     }

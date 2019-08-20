@@ -66,7 +66,8 @@
   text-align: center;
   line-height: 30px;
 }
-h5#markdownurlsrc {
+h5#markdownurlsrc,
+h5#markdownerror {
   padding: 3px 3px;
   color: #007aff;
   border-radius: 3px;
