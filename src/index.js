@@ -1,9 +1,9 @@
 import "./样式.css";
-import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
+import "@masx200/webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
 ("use strict");
 import "./我的侧边栏.css";
 
-import "webpack-react-vue-spa-awesome-config/registerserviceworker.js";
+import "@masx200/webpack-react-vue-spa-awesome-config/registerserviceworker.js";
 import "./ditto.css";
 import "./hidewidthless500.css";
 import "./index.css";

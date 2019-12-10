@@ -1,24 +1,24 @@
-import { ApphomeVm } from "./index";
-
+import jQuery from "jquery";
 import newconfig from "./config";
 import fetchajaxgettext from "./fetchajaxgettext";
+import hljs from "./highlight.min.js";
+import { ApphomeVm } from "./index";
+import marked from "./marked.min";
+/* eslint-disable no-useless-escape */
+// var MathJax = window.MathJax;
+import MathJax from "./MathJax/index";
+// console.log(webpackrequirepublicpath);
+import { 内容调整左边偏移 } from "./render";
 import webpackrequirepublicpath from "./webpack-require-public-path";
-// const summaryfile = new URL("summary.md", webpackrequirepublicpath).href;
 
+// const summaryfile = new URL("summary.md", webpackrequirepublicpath).href;
+const cachemarkdown = new Map();
 const summaryfile = new URL(
   newconfig.summary,
 
   webpackrequirepublicpath
 ).href;
-// console.log(webpackrequirepublicpath);
-import { 内容调整左边偏移 } from "./render";
 ("use strict");
-import hljs from "./highlight.min.js";
-import marked from "./marked.min";
-import jQuery from "jquery";
-/* eslint-disable no-useless-escape */
-// var MathJax = window.MathJax;
-import MathJax from "./MathJax/index";
 // import { connectableObservableDescriptor } from "rxjs/internal/observable/ConnectableObservable";
 // var exports, module;
 var readme加载失败 = false;
@@ -90,6 +90,77 @@ export default (() => {
       //   fetchajaxgettext(ditto.sidebar_file)
       fetchajaxgettext(path)
         .then(function(data) {
+          ApphomeVm.mulu = marked(data);
+          return new Promise(r => {
+            requestAnimationFrame(() => {
+              $(ApphomeVm.$refs.我的侧边栏).css("top", $("#my导航栏").height());
+              $(ApphomeVm.$refs.我的侧边栏.querySelectorAll("ul")).addClass(
+                "navbar-nav"
+              );
+
+              $(ApphomeVm.$refs.我的侧边栏.querySelectorAll("a")).addClass(
+                `mui-btn mui-btn-primary mui-btn-outlined`
+              );
+              内容调整左边偏移().then(() => r());
+            });
+          }).then(() => {
+            requestAnimationFrame(() => {
+              $("#my主体").css("padding-top", $("#my导航栏").height());
+              /* 预先加载sidebar当中的markdwon文件到head的link的prefetch元素,来提升加载速度 */
+
+              //   Array(...$("#sidebar a"))
+              //     .map(e => e.hash)
+              //     .filter(e => e.startsWith("#"))
+              //     .map(e => e.slice(1))
+              //     .forEach(e => {
+              //       var linkmarkdwon = document.createElement("link");
+              //       linkmarkdwon.rel = "prefetch";
+              //       linkmarkdwon.href = e + ".md";
+              //       document.head.appendChild(linkmarkdwon);
+              //     });
+              // })
+              Array.from(ApphomeVm.$refs.我的侧边栏.querySelectorAll("a"))
+
+                //   Array(...$("#mynewsidelan a"))
+                /* 改成summary.md文件了 ,链接不带#*/
+
+                .map(a => {
+                  //   a.href = "#" + a.href;
+
+                  var b = new URL("#" + a.getAttribute("href"), location.href);
+                  //   console.log(b);
+                  a.href = b.href;
+                  return b;
+                })
+                .map(e => e.hash)
+                .filter(e => e.startsWith("#"))
+                .map(e => e.slice(1))
+                .forEach(e => {
+                  /* The FetchEvent for "https://cdn.jsdelivr.net/gh/masx200/markdown-reader@2.1.1/docs/why_use_ditto.md" resulted in a network error response: an "opaque" response was used for a request whose type is not no-cors */
+                  //   var linkmarkdwon = document.createElement("link");
+                  //   linkmarkdwon.rel = "prefetch";
+                  //   linkmarkdwon.href =
+                  fetch(
+                    // @ts-ignore
+                    new URL(
+                      e.endsWith(".md") ? e : e + ".md",
+                      webpackrequirepublicpath
+                    ),
+                    {
+                      credentials: "omit",
+                      //   headers: { accept: "*/*" },
+                      body: null,
+                      method: "GET",
+                      mode: "cors"
+                    }
+                  );
+
+                  //   document.head.appendChild(linkmarkdwon);
+                });
+              //   $("#markdownerror").hide();
+              ApphomeVm.showerror = false;
+            });
+          });
           //加载完目录部分的markdown的回调函数
 
           //   ditto.sidebar_id.html(marked(data));
@@ -97,7 +168,7 @@ export default (() => {
           //   document.querySelector("#cebianlan .el-aside").innerHTML = marked(
           //     data
           //   );
-          ApphomeVm.mulu = marked(data);
+
           /* Vue异步的设置html */
           //   console.log(ApphomeVm);
           //   console.log(
@@ -106,17 +177,7 @@ export default (() => {
 
           //   $("#cebianlan").css("top", $("#my导航栏").height());
           //   console.log(ApphomeVm.$refs.我的侧边栏.querySelectorAll("ul"));
-          requestAnimationFrame(() => {
-            $(ApphomeVm.$refs.我的侧边栏).css("top", $("#my导航栏").height());
-            $(ApphomeVm.$refs.我的侧边栏.querySelectorAll("ul")).addClass(
-              "navbar-nav"
-            );
 
-            $(ApphomeVm.$refs.我的侧边栏.querySelectorAll("a")).addClass(
-              `mui-btn mui-btn-primary mui-btn-outlined`
-            );
-            内容调整左边偏移();
-          });
           //   });
 
           //   $("#cebianlan  ul").addClass("navbar-nav");
@@ -145,62 +206,6 @@ export default (() => {
           //   // $("#sidebar >ul>li> a").addClass("nav-link")
           //   // $("#sidebar >h1> a").addClass("nav-link")
           //   $("#sidebar  input").addClass("nav-link");
-          requestAnimationFrame(() => {
-            $("#my主体").css("padding-top", $("#my导航栏").height());
-            /* 预先加载sidebar当中的markdwon文件到head的link的prefetch元素,来提升加载速度 */
-
-            //   Array(...$("#sidebar a"))
-            //     .map(e => e.hash)
-            //     .filter(e => e.startsWith("#"))
-            //     .map(e => e.slice(1))
-            //     .forEach(e => {
-            //       var linkmarkdwon = document.createElement("link");
-            //       linkmarkdwon.rel = "prefetch";
-            //       linkmarkdwon.href = e + ".md";
-            //       document.head.appendChild(linkmarkdwon);
-            //     });
-            // })
-            Array.from(ApphomeVm.$refs.我的侧边栏.querySelectorAll("a"))
-
-              //   Array(...$("#mynewsidelan a"))
-              /* 改成summary.md文件了 ,链接不带#*/
-
-              .map(a => {
-                //   a.href = "#" + a.href;
-
-                var b = new URL("#" + a.getAttribute("href"), location.href);
-                //   console.log(b);
-                a.href = b.href;
-                return b;
-              })
-              .map(e => e.hash)
-              .filter(e => e.startsWith("#"))
-              .map(e => e.slice(1))
-              .forEach(e => {
-                /* The FetchEvent for "https://cdn.jsdelivr.net/gh/masx200/markdown-reader@2.1.1/docs/why_use_ditto.md" resulted in a network error response: an "opaque" response was used for a request whose type is not no-cors */
-                //   var linkmarkdwon = document.createElement("link");
-                //   linkmarkdwon.rel = "prefetch";
-                //   linkmarkdwon.href =
-                fetch(
-                  // @ts-ignore
-                  new URL(
-                    e.endsWith(".md") ? e : e + ".md",
-                    webpackrequirepublicpath
-                  ),
-                  {
-                    credentials: "omit",
-                    //   headers: { accept: "*/*" },
-                    body: null,
-                    method: "GET",
-                    mode: "cors"
-                  }
-                );
-
-                //   document.head.appendChild(linkmarkdwon);
-              });
-            //   $("#markdownerror").hide();
-            ApphomeVm.showerror = false;
-          });
         })
 
         // }
@@ -615,88 +620,106 @@ export default (() => {
         //  $("#markdownurlsrc").text()
         ApphomeVm.urltext
       ) {
-        fetchajaxgettext(path)
-          .then(function(data) {
-            /* 设置所有代码段都可以编辑,不知为何,网页所有部分都不能选择文字? */
-            /*<style>
- * {
-        -webkit-user-select: text;
-        -moz-user-select: text;
-        -o-user-select: text;
-        user-select: text;
-      }
-      </style> */
-            //加载完主体部分的markdown的回调函数
-            $("#collapsibleNavbar").removeClass("show");
-            $("#my主体").css("padding-top", $("#my导航栏").height());
+        const marktext = cachemarkdown.get(path);
+        console.log(cachemarkdown);
+        if (marktext) {
+          ApphomeVm.urltext = path;
+          stop_loading();
+          ApphomeVm.content = marktext;
+        } else {
+          fetchajaxgettext(path)
+            .then(function(data) {
+              /* 设置所有代码段都可以编辑,不知为何,网页所有部分都不能选择文字? */
+              /*<style>
+   * {
+          -webkit-user-select: text;
+          -moz-user-select: text;
+          -o-user-select: text;
+          user-select: text;
+        }
+        </style> */
+              //加载完主体部分的markdown的回调函数
+              $("#collapsibleNavbar").removeClass("show");
+              $("#my主体").css("padding-top", $("#my导航栏").height());
 
-            compile_into_dom(data, function() {
-              requestAnimationFrame(() => {
-                // rerender mathjax and reset mathjax equation counter
-                if (MathJax && MathJax.Extension["Tex/AMSmath"]) {
-                  MathJax.Extension["TeX/AMSmath"].startNumber = 0;
-                  MathJax.Extension["TeX/AMSmath"].labels = {};
+              return compile_into_dom(data)
+                .then(function() {
+                  return new Promise(r => {
+                    requestAnimationFrame(() => {
+                      // rerender mathjax and reset mathjax equation counter
+                      if (MathJax && MathJax.Extension["Tex/AMSmath"]) {
+                        MathJax.Extension["TeX/AMSmath"].startNumber = 0;
+                        MathJax.Extension["TeX/AMSmath"].labels = {};
 
-                  var content = ApphomeVm.$refs.markdown内容; //document.getElementById("content");
-                  MathJax.Hub.Queue(["Typeset", MathJax.Hub, content]);
-                }
-              });
-            });
+                        var content = ApphomeVm.$refs.markdown内容; //document.getElementById("content");
+                        MathJax.Hub.Queue(["Typeset", MathJax.Hub, content]);
+                      }
+                      r();
+                    });
+                  });
+                })
+                .then(() => {
+                  return new Promise(r => {
+                    requestAnimationFrame(() => {
+                      /* Uncaught DOMException: Failed to execute 'querySelector' on 'Document': '#1895f0fd862578e8198037b27fe2bb1e0d9' is not a valid selector. */
+                      /* 批量设置clipboard的代码复制 */
+                      Array.from(jQuery("code.hljs"))
+                        // ...jQuery("code.language-javascript.hljs"),
+                        // ...jQuery("code.language-html")
+                        .forEach(e => {
+                          var codecontenguid = "clip" + guid();
+                          jQuery(e)
+                            // .attr("contenteditable", true)
+                            .attr("id", codecontenguid)
+                            .after(`<button class="btn btn-outline-primary clipbutton" data-clipboard-target="#${codecontenguid}">复制
+                                        </button>`);
+                        });
+                      //    <img class="clipbuttonimg" src="${jQuery("#clipsvg").attr("src")}" alt="复制到剪贴板">
+                      // jQuery();
 
-            requestAnimationFrame(() => {
-              /* Uncaught DOMException: Failed to execute 'querySelector' on 'Document': '#1895f0fd862578e8198037b27fe2bb1e0d9' is not a valid selector. */
-              /* 批量设置clipboard的代码复制 */
-              Array.from(jQuery("code.hljs"))
-                // ...jQuery("code.language-javascript.hljs"),
-                // ...jQuery("code.language-html")
-                .forEach(e => {
-                  var codecontenguid = "clip" + guid();
-                  jQuery(e)
-                    // .attr("contenteditable", true)
-                    .attr("id", codecontenguid)
-                    .after(`<button class="btn btn-outline-primary clipbutton" data-clipboard-target="#${codecontenguid}">复制
-                          </button>`);
+                      内容调整左边偏移();
+
+                      /* 加载成功之后,设置hash */
+                      setTimeout(() => {
+                        stop_loading();
+                      }, 0);
+
+                      // $("#markdownurlsrc").text(path);
+
+                      ApphomeVm.urltext = path;
+                      if (window.innerWidth < 550) {
+                        //   $("#cebianlan").hide();
+                        ApphomeVm.xianshicebianlan = false;
+                      }
+                      var contenthtml = ApphomeVm.$refs.markdown内容.innerHTML;
+                      cachemarkdown.set(path, contenthtml);
+                      r();
+                    });
+                  });
                 });
-              //    <img class="clipbuttonimg" src="${jQuery("#clipsvg").attr("src")}" alt="复制到剪贴板">
-              // jQuery();
+            })
+            .catch(function() {
+              ApphomeVm.urltext = "加载失败 " + path;
+              if (readme加载失败) return;
+              console.error("Opps! ... File not found!\n5秒后返回主页");
+              show_error("Opps! ... File not found!\n5秒后返回主页");
+              stop_loading();
 
-              内容调整左边偏移();
-
-              /* 加载成功之后,设置hash */
-              setTimeout(() => {
-                stop_loading();
-              }, 0);
-
-              // $("#markdownurlsrc").text(path);
-
-              ApphomeVm.urltext = path;
-              if (window.innerWidth < 550) {
-                //   $("#cebianlan").hide();
-                ApphomeVm.xianshicebianlan = false;
+              if (!readme加载失败) {
+                setTimeout(() => {
+                  page_getter(true);
+                  // location.hash = "#";
+                }, 5000);
               }
+              // if (path === "./" + ditto.index) {
+              readme加载失败 = true;
+              // }
+              console.warn("load failed " + path);
+              // $("#markdownurlsrc").text("加载失败 " + path);
+
+              ApphomeVm.urltext = "加载失败 " + path;
             });
-          })
-          .catch(function() {
-            ApphomeVm.urltext = "加载失败 " + path;
-            if (readme加载失败) return;
-            console.error("Opps! ... File not found!\n5秒后返回主页");
-            show_error("Opps! ... File not found!\n5秒后返回主页");
-            stop_loading();
-
-            if (!readme加载失败) {
-              setTimeout(() => {
-                page_getter(true);
-                // location.hash = "#";
-              }, 5000);
-            }
-            // if (path === "./" + ditto.index) {
-            readme加载失败 = true;
-            // }
-            console.warn("load failed " + path);
-            // $("#markdownurlsrc").text("加载失败 " + path);
-
-            ApphomeVm.urltext = "加载失败 " + path;
-          });
+        }
       }
     }
 
@@ -708,34 +731,38 @@ export default (() => {
       return string.replace(/&amp;#92;/g, "\\").replace(/&amp;#95;/g, "_");
     }
 
-    function compile_into_dom(data, cb) {
-      hide_errors();
+    function compile_into_dom(data /* , cb */) {
+      return new Promise(r => {
+        hide_errors();
 
-      //   data = create_youtube_embeds(data);
-      data = marked(escape_html(data));
-      data = unescape_html(data);
-      //   document.getElementById("content").innerHTML = data;
-      ApphomeVm.content = data;
+        //   data = create_youtube_embeds(data);
+        data = marked(escape_html(data));
+        data = unescape_html(data);
+        //   document.getElementById("content").innerHTML = data;
+        ApphomeVm.content = data;
 
-      /* vue组件异步刷新! */
+        /* vue组件异步刷新! */
 
-      requestAnimationFrame(() => {
-        stop_loading();
-        //   escape_github_badges(data);
+        requestAnimationFrame(() => {
+          stop_loading();
+          //   escape_github_badges(data);
 
-        // normalize_paths();
-        //   create_page_anchors();
+          // normalize_paths();
+          //   create_page_anchors();
 
-        if (ditto.highlight_code) {
-          Array.from($("pre code")).forEach(function(block) {
-            hljs.highlightBlock(block);
-          });
-        }
+          if (ditto.highlight_code) {
+            Array.from($("pre code")).forEach(function(block) {
+              hljs.highlightBlock(block);
+            });
+          }
 
-        if (cb) {
-          cb(data);
-        }
+          //   if (cb) {
+          //     cb(data);
+          //   }
+          r();
+        });
       });
+
       //   ditto.content_id.html(data);
     }
 

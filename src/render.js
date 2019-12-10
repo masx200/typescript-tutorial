@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use strict";
 import { ApphomeVm } from "./index";
 // console.log("加载render");
@@ -93,28 +94,31 @@ export function 挂载初始() {
 //   内容调整左边偏移();
 // });
 export function 内容调整左边偏移() {
-  requestAnimationFrame(() => {
-    if (window.innerWidth > 550) {
-      var 左边偏移量 =
-        $("#cebianlan")[0].offsetWidth - $("#contentcontainer").offset().left;
-      //   if (左边偏移量 < 15) 左边偏移量 = 15;
-      左边偏移量 = Math.max(左边偏移量, 20);
-      // setTimeout(() => {
-      $("#contentcontainer").css({
-        "padding-left": 左边偏移量 + 20
-      });
-      //   $("#markdownurlsrc").css({
-      //     left: 左边偏移量 + 20
-      //   });
-      // }, 0);
-    } else {
-      //   $("#markdownurlsrc").css({
-      //     left: 20
-      //   });
-      $("#contentcontainer").css({
-        "padding-left": 20
-      });
-    }
+  return new Promise(r => {
+    requestAnimationFrame(() => {
+      if (window.innerWidth > 550) {
+        var 左边偏移量 =
+          $("#cebianlan")[0].offsetWidth - $("#contentcontainer").offset().left;
+        //   if (左边偏移量 < 15) 左边偏移量 = 15;
+        左边偏移量 = Math.max(左边偏移量, 20);
+        // setTimeout(() => {
+        $("#contentcontainer").css({
+          "padding-left": 左边偏移量 + 20
+        });
+        //   $("#markdownurlsrc").css({
+        //     left: 左边偏移量 + 20
+        //   });
+        // }, 0);
+      } else {
+        //   $("#markdownurlsrc").css({
+        //     left: 20
+        //   });
+        $("#contentcontainer").css({
+          "padding-left": 20
+        });
+      }
+      r();
+    });
   });
 }
 window.addEventListener("resize", () => {
