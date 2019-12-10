@@ -182,6 +182,7 @@ export default (() => {
                 //   linkmarkdwon.rel = "prefetch";
                 //   linkmarkdwon.href =
                 fetch(
+                  // @ts-ignore
                   new URL(
                     e.endsWith(".md") ? e : e + ".md",
                     webpackrequirepublicpath
@@ -768,9 +769,9 @@ export default (() => {
     // }
     return ditto;
   })(
-    jQuery,
-    ("undefined" != typeof window && window) ||
-      ("undefined" != typeof WorkerGlobalScope && WorkerGlobalScope) ||
-      this
+    jQuery
+    // ("undefined" != typeof window && window) ||
+    //   ("undefined" != typeof WorkerGlobalScope && WorkerGlobalScope) ||
+    //   this
   );
 })();

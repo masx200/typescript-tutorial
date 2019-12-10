@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable no-undef */
 // // module.exports = require.p;
 // // export default import.meta;
