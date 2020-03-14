@@ -1,5 +1,5 @@
 {
-  "name": "typescript-tutorial",
+  "name": "@masx200/typescript-tutorial",
   "version": "2.0.1",
   "scripts": {
     "start": "webpack-react-vue-spa-awesome-config start",
