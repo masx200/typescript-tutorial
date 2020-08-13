@@ -41,8 +41,9 @@
     "serialize-javascript": "^4.0.0",
     "terser": "^4.4.2",
     "terser-webpack-plugin": "^2.2.2",
-    "typescript": "^3.7.3",
-    "vue": "^2.6.10"
+    "typescript": "^3.9.7",
+    "vue": "^2.6.11",
+"webpack":"4.44.1"
   },
   "dependencies": {}
 }
