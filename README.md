@@ -2,6 +2,8 @@
 
 浏览器端渲染
 
+https://github.com/masx200/typescript-tutorial
+
 原作者仓库
 
 https://github.com/xcatliu/typescript-tutorial
