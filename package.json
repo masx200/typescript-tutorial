@@ -18,7 +18,7 @@
     "devDependencies": {
         "@masx200/markdown-reader": "https://github.com/masx200/markdown-reader.git",
         "@types/highlight.js": "^9.12.3",
-        "@masx200/webpack-react-vue-spa-awesome-config": "2.7.1",
+        "@masx200/webpack-react-vue-spa-awesome-config": "2.8.0",
         "babel-eslint": "^10.0.2",
         "eslint": "^6.8.0",
         "minimist": "1.2.5",
