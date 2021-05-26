@@ -1,4 +1,4 @@
-## 进阶
+# 进阶
 
 本部分介绍一些高级的类型与技术，具体内容包括：
 
@@ -11,8 +11,3 @@
 - [泛型](generics.md)
 - [声明合并](declaration-merging.md)
 - [扩展阅读](further-reading.md)
-
----
-
-- [上一章：内置对象](built-in-objects.md)
-- [下一章：类型别名](type-aliases.md)

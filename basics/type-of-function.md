@@ -85,6 +85,8 @@ mySearch = function(source: string, subString: string) {
 }
 ```
 
+采用函数表达式|接口定义函数的方式时，对等号左侧进行类型限制，可以保证以后对函数名赋值时保证参数个数、参数类型、返回值类型不变。
+
 ## 可选参数
 
 前面提到，输入多余的（或者少于要求的）参数，是不允许的。那么如何定义可选的参数呢？
@@ -103,7 +105,7 @@ let tomcat = buildName('Tom', 'Cat');
 let tom = buildName('Tom');
 ```
 
-需要注意的是，可选参数必须接在必需参数后面。换句话说，**可选参数后面不允许再出现必须参数了**：
+需要注意的是，可选参数必须接在必需参数后面。换句话说，**可选参数后面不允许再出现必需参数了**：
 
 ```ts
 function buildName(firstName?: string, lastName: string) {
@@ -154,7 +156,7 @@ function push(array, ...items) {
     });
 }
 
-let a = [];
+let a: any[] = [];
 push(a, 1, 2, 3);
 ```
 
@@ -182,7 +184,7 @@ push(a, 1, 2, 3);
 利用联合类型，我们可以这么实现：
 
 ```ts
-function reverse(x: number | string): number | string {
+function reverse(x: number | string): number | string | void {
     if (typeof x === 'number') {
         return Number(x.toString().split('').reverse().join(''));
     } else if (typeof x === 'string') {
@@ -191,14 +193,14 @@ function reverse(x: number | string): number | string {
 }
 ```
 
-然而这样有一个缺点，就是不能够精确的表达，输入为数字的时候，输出也应该为数字，输入为字符串的时候，输出也应该为字符串。
+**然而这样有一个缺点，就是不能够精确的表达，输入为数字的时候，输出也应该为数字，输入为字符串的时候，输出也应该为字符串。**
 
 这时，我们可以使用重载定义多个 `reverse` 的函数类型：
 
 ```ts
 function reverse(x: number): number;
 function reverse(x: string): string;
-function reverse(x: number | string): number | string {
+function reverse(x: number | string): number | string | void {
     if (typeof x === 'number') {
         return Number(x.toString().split('').reverse().join(''));
     } else if (typeof x === 'string') {
@@ -223,8 +225,3 @@ function reverse(x: number | string): number | string {
 [ES6 中的箭头函数]: http://es6.ruanyifeng.com/#docs/function#箭头函数
 [ES6 中函数参数的默认值]: http://es6.ruanyifeng.com/#docs/function#函数参数的默认值
 [ES6 中的 rest 参数]: http://es6.ruanyifeng.com/#docs/function#rest参数
-
----
-
-- [上一章：数组的类型](type-of-array.md)
-- [下一章：类型断言](type-assertion.md)

@@ -2,7 +2,7 @@
 
 JavaScript 的类型分为两种：原始数据类型（[Primitive data types][]）和对象类型（Object types）。
 
-原始数据类型包括：布尔值、数值、字符串、`null`、`undefined` 以及 [ES6 中的新类型 `Symbol`][]。
+原始数据类型包括：布尔值、数值、字符串、`null`、`undefined` 以及 ES6 中的新类型 [`Symbol`][] 和 ES10 中的新类型 [`BigInt`][]。
 
 本节主要介绍**前五种**原始数据类型在 TypeScript 中的应用。
 
@@ -22,8 +22,8 @@ let isDone: boolean = false;
 ```ts
 let createdByNewBoolean: boolean = new Boolean(1);
 
-// index.ts(1,5): error TS2322: Type 'Boolean' is not assignable to type 'boolean'.
-// 后面约定，注释中标出了编译报错的代码片段，表示编译未通过
+// Type 'Boolean' is not assignable to type 'boolean'.
+//   'boolean' is a primitive, but 'Boolean' is a wrapper object. Prefer using 'boolean' when possible.
 ```
 
 事实上 `new Boolean()` 返回的是一个 `Boolean` 对象：
@@ -104,7 +104,7 @@ function alertName(): void {
 }
 ```
 
-声明一个 `void` 类型的变量没有什么用，因为你只能将它赋值为 `undefined` 和 `null`：
+声明一个 `void` 类型的变量没有什么用，因为你只能将它赋值为 `undefined` 和 `null`（只在 --strictNullChecks 未指定时）：
 
 ```ts
 let unusable: void = undefined;
@@ -118,8 +118,6 @@ let unusable: void = undefined;
 let u: undefined = undefined;
 let n: null = null;
 ```
-
-`undefined` 类型的变量只能被赋值为 `undefined`，`null` 类型的变量只能被赋值为 `null`。
 
 与 `void` 的区别是，`undefined` 和 `null` 是所有类型的子类型。也就是说 `undefined` 类型的变量，可以赋值给 `number` 类型的变量：
 
@@ -140,7 +138,7 @@ let num: number = u;
 let u: void;
 let num: number = u;
 
-// index.ts(2,5): error TS2322: Type 'void' is not assignable to type 'number'.
+// Type 'void' is not assignable to type 'number'.
 ```
 
 ## 参考
@@ -151,12 +149,8 @@ let num: number = u;
 - [ES6 中的二进制和八进制表示法][]
 - [ES6 中的模板字符串][]
 
----
-
-- [上一章：基础](README.md)
-- [下一章：任意值](any.md)
-
 [Primitive data types]: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
-[ES6 中的新类型 `Symbol`]: http://es6.ruanyifeng.com/#docs/symbol
+[`Symbol`]: http://es6.ruanyifeng.com/#docs/symbol
+[`BigInt`]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/BigInt
 [ES6 中的二进制和八进制表示法]: http://es6.ruanyifeng.com/#docs/number#二进制和八进制表示法
 [ES6 中的模板字符串]: http://es6.ruanyifeng.com/#docs/string#模板字符串

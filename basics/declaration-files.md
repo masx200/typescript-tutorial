@@ -11,7 +11,7 @@
 - [`declare class`](#declare-class) 声明全局类
 - [`declare enum`](#declare-enum) 声明全局枚举类型
 - [`declare namespace`](#declare-namespace) 声明（含有子属性的）全局对象
-- [`interface` 和 `type`](#interface-he-type) 声明全局类型
+- [`interface` 和 `type`](#interface-和-type) 声明全局类型
 - [`export`](#export) 导出变量
 - [`export namespace`](#export-namespace) 导出（含有子属性的）对象
 - [`export default`](#export-default) ES6 默认导出
@@ -518,7 +518,7 @@ jQuery.ajax('/api/get_something');
 
 注意 `module` 配置可以有很多种选项，不同的选项会影响模块的导入导出模式。这里我们使用了 `commonjs` 这个最常用的选项，后面的教程也都默认使用的这个选项。
 
-不管采用了以上两种方式中的哪一种，我都**强烈建议**大家将书写好的声明文件（通过给第三发库发 pull request，或者直接提交到 `@types` 里）发布到开源社区中，享受了这么多社区的优秀的资源，就应该在力所能及的时候给出一些回馈。只有所有人都参与进来，才能让 ts 社区更加繁荣。
+不管采用了以上两种方式中的哪一种，我都**强烈建议**大家将书写好的声明文件（通过给第三方库发 pull request，或者直接提交到 `@types` 里）发布到开源社区中，享受了这么多社区的优秀的资源，就应该在力所能及的时候给出一些回馈。只有所有人都参与进来，才能让 ts 社区更加繁荣。
 
 npm 包的声明文件主要有以下几种语法：
 
@@ -1149,10 +1149,5 @@ pull-request 需要符合它们的规范，并且通过测试，才能被合并�
 - [Triple-Slash Directives](http://www.typescriptlang.org/docs/handbook/triple-slash-directives.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Triple-Slash%20Directives.html)）
 - [typeRoots or paths](https://github.com/Microsoft/TypeScript/issues/22217#issuecomment-369783776)
 - [DefinitelyTyped][]
-
----
-
-- [上一章：类型断言](type-assertion.md)
-- [下一章：内置对象](built-in-objects.md)
 
 [DefinitelyTyped]: https://github.com/DefinitelyTyped/DefinitelyTyped/
