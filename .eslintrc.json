@@ -1,26 +1,26 @@
 {
-  "parser": "vue-eslint-parser",
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true,
-    "worker": true,
-    "commonjs": true,
-    "amd": true
-  },
-  "extends": ["eslint:recommended", "plugin:vue/recommended"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parserOptions": {
-    "parser": "babel-eslint",
-    "ecmaVersion": 2019,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "rules": {},
-  "plugins": ["vue"]
+    "parser": "vue-eslint-parser",
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "worker": true,
+        "commonjs": true,
+        "amd": true
+    },
+    "extends": ["eslint:recommended", "plugin:vue/recommended"],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "ecmaVersion": 2019,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {},
+    "plugins": ["vue"]
 }

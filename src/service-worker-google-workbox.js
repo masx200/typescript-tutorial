@@ -1,5 +1,5 @@
 importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js"
+    "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js"
 );
 
 // if (workbox) {
@@ -74,25 +74,25 @@ importScripts(
 // );
 
 workbox.routing.registerRoute(
-  /.*\.(?:js|html|\/)$/,
-  new workbox.strategies.NetworkFirst(),
-  "GET"
+    /.*\.(?:js|html|\/)$/,
+    new workbox.strategies.NetworkFirst(),
+    "GET"
 );
 workbox.routing.registerRoute(
-  /.*\.(?:xml|json|md|css)$/,
-  new workbox.strategies.StaleWhileRevalidate(),
-  "GET"
+    /.*\.(?:xml|json|md|css)$/,
+    new workbox.strategies.StaleWhileRevalidate(),
+    "GET"
 );
 workbox.routing.registerRoute(
-  /\.(?:png|jpg|jpeg|svg|gif)$/,
-  new workbox.strategies.CacheFirst({
-    cacheName: "image-cache",
-    plugins: [
-      new workbox.expiration.Plugin({
-        maxEntries: 10,
-        purgeOnQuotaError: false
-      })
-    ]
-  }),
-  "GET"
+    /\.(?:png|jpg|jpeg|svg|gif)$/,
+    new workbox.strategies.CacheFirst({
+        cacheName: "image-cache",
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 10,
+                purgeOnQuotaError: false,
+            }),
+        ],
+    }),
+    "GET"
 );

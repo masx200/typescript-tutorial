@@ -4,10 +4,10 @@ TypeScript 提供了非常多的编译选项，但是官方文档对每一项的
 
 索引（点击选项跳转到详细介绍）：
 
-选项 | 类型 | 默认值 | 描述
---- | --- | --- | ---
-[`allowJs`](#allowjs) | `boolean` | `false` | 允许编译 js 文件
-[`allowSyntheticDefaultImports`](#allowsyntheticdefaultimports) | `boolean` | `false` | 允许对不包含默认导出的模块使用默认导入。这个选项不会影响生成的代码，只会影响类型检查。
+| 选项                                                            | 类型      | 默认值  | 描述                                                                                   |
+| --------------------------------------------------------------- | --------- | ------- | -------------------------------------------------------------------------------------- |
+| [`allowJs`](#allowjs)                                           | `boolean` | `false` | 允许编译 js 文件                                                                       |
+| [`allowSyntheticDefaultImports`](#allowsyntheticdefaultimports) | `boolean` | `false` | 允许对不包含默认导出的模块使用默认导入。这个选项不会影响生成的代码，只会影响类型检查。 |
 
 ## allowJs
 
@@ -69,7 +69,7 @@ declare namespace React {
 ：
 
 ```ts
-import React from 'react';
+import React from "react";
 // Module '"typescript-tutorial/examples/compiler-options/02-allowSyntheticDefaultImports/false/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flagts(1259)
 ```
 

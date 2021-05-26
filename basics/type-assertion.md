@@ -5,13 +5,13 @@
 ## 语法
 
 ```ts
-值 as 类型
+值 as 类型;
 ```
 
 或
 
 ```ts
-<类型>值
+<类型>值;
 ```
 
 在 tsx 语法（React 的 jsx 语法的 ts 版）中必须使用前者，即 `值 as 类型`。
@@ -56,7 +56,7 @@ interface Fish {
 }
 
 function isFish(animal: Cat | Fish) {
-    if (typeof animal.swim === 'function') {
+    if (typeof animal.swim === "function") {
         return true;
     }
     return false;
@@ -81,7 +81,7 @@ interface Fish {
 }
 
 function isFish(animal: Cat | Fish) {
-    if (typeof (animal as Fish).swim === 'function') {
+    if (typeof (animal as Fish).swim === "function") {
         return true;
     }
     return false;
@@ -107,8 +107,10 @@ function swim(animal: Cat | Fish) {
 }
 
 const tom: Cat = {
-    name: 'Tom',
-    run() { console.log('run') }
+    name: "Tom",
+    run() {
+        console.log("run");
+    },
 };
 swim(tom);
 // Uncaught TypeError: animal.swim is not a function`
@@ -139,7 +141,7 @@ class HttpError extends Error {
 }
 
 function isApiError(error: Error) {
-    if (typeof (error as ApiError).code === 'number') {
+    if (typeof (error as ApiError).code === "number") {
         return true;
     }
     return false;
@@ -201,7 +203,7 @@ interface HttpError extends Error {
 }
 
 function isApiError(error: Error) {
-    if (typeof (error as ApiError).code === 'number') {
+    if (typeof (error as ApiError).code === "number") {
         return true;
     }
     return false;
@@ -279,7 +281,7 @@ interface Cat {
     run(): void;
 }
 
-const tom = getCacheData('tom') as Cat;
+const tom = getCacheData("tom") as Cat;
 tom.run();
 ```
 
@@ -291,10 +293,10 @@ tom.run();
 
 从上面的例子中，我们可以总结出：
 
-- 联合类型可以被断言为其中一个类型
-- 父类可以被断言为子类
-- 任何类型都可以被断言为 any
-- any 可以被断言为任何类型
+-   联合类型可以被断言为其中一个类型
+-   父类可以被断言为子类
+-   任何类型都可以被断言为 any
+-   any 可以被断言为任何类型
 
 那么类型断言有没有什么限制呢？是不是任何一个类型都可以被断言为任何另一个类型呢？
 
@@ -314,8 +316,10 @@ interface Cat {
 }
 
 let tom: Cat = {
-    name: 'Tom',
-    run: () => { console.log('run') }
+    name: "Tom",
+    run: () => {
+        console.log("run");
+    },
 };
 let animal: Animal = tom;
 ```
@@ -349,17 +353,17 @@ interface Cat {
 }
 
 function testAnimal(animal: Animal) {
-    return (animal as Cat);
+    return animal as Cat;
 }
 function testCat(cat: Cat) {
-    return (cat as Animal);
+    return cat as Animal;
 }
 ```
 
 这样的设计其实也很容易就能理解：
 
-- 允许 `animal as Cat` 是因为「父类可以被断言为子类」，这个前面已经学习过了
-- 允许 `cat as Animal` 是因为既然子类拥有父类的属性和方法，那么被断言为父类，获取父类的属性、调用父类的方法，就不会有任何问题，故「子类可以被断言为父类」
+-   允许 `animal as Cat` 是因为「父类可以被断言为子类」，这个前面已经学习过了
+-   允许 `cat as Animal` 是因为既然子类拥有父类的属性和方法，那么被断言为父类，获取父类的属性、调用父类的方法，就不会有任何问题，故「子类可以被断言为父类」
 
 需要注意的是，这里我们使用了简化的父类子类的关系来表达类型的兼容性，而实际上 TypeScript 在判断类型的兼容性时，比这种情况复杂很多，详细请参考[类型的兼容性（TODO)][]章节。
 
@@ -373,11 +377,11 @@ function testCat(cat: Cat) {
 
 综上所述：
 
-- 联合类型可以被断言为其中一个类型
-- 父类可以被断言为子类
-- 任何类型都可以被断言为 any
-- any 可以被断言为任何类型
-- 要使得 `A` 能够被断言为 `B`，只需要 `A` 兼容 `B` 或 `B` 兼容 `A` 即可
+-   联合类型可以被断言为其中一个类型
+-   父类可以被断言为子类
+-   任何类型都可以被断言为 any
+-   any 可以被断言为任何类型
+-   要使得 `A` 能够被断言为 `B`，只需要 `A` 兼容 `B` 或 `B` 兼容 `A` 即可
 
 其实前四种情况都是最后一个的特例。
 
@@ -385,8 +389,8 @@ function testCat(cat: Cat) {
 
 既然：
 
-- 任何类型都可以被断言为 any
-- any 可以被断言为任何类型
+-   任何类型都可以被断言为 any
+-   any 可以被断言为任何类型
 
 那么我们是不是可以使用双重断言 `as any as Foo` 来将任何一个类型断言为任何另一个类型呢？
 
@@ -399,7 +403,7 @@ interface Fish {
 }
 
 function testCat(cat: Cat) {
-    return (cat as any as Fish);
+    return cat as any as Fish;
 }
 ```
 
@@ -462,7 +466,7 @@ interface Cat {
     run(): void;
 }
 
-const tom = getCacheData('tom') as Cat;
+const tom = getCacheData("tom") as Cat;
 tom.run();
 ```
 
@@ -480,7 +484,7 @@ interface Cat {
     run(): void;
 }
 
-const tom: Cat = getCacheData('tom');
+const tom: Cat = getCacheData("tom");
 tom.run();
 ```
 
@@ -500,7 +504,7 @@ interface Cat {
 }
 
 const animal: Animal = {
-    name: 'tom'
+    name: "tom",
 };
 let tom = animal as Cat;
 ```
@@ -519,7 +523,7 @@ interface Cat {
 }
 
 const animal: Animal = {
-    name: 'tom'
+    name: "tom",
 };
 let tom: Cat = animal;
 
@@ -532,21 +536,21 @@ let tom: Cat = animal;
 
 深入的讲，它们的核心区别就在于：
 
-- `animal` 断言为 `Cat`，只需要满足 `Animal` 兼容 `Cat` 或 `Cat` 兼容 `Animal` 即可
-- `animal` 赋值给 `tom`，需要满足 `Cat` 兼容 `Animal` 才行
+-   `animal` 断言为 `Cat`，只需要满足 `Animal` 兼容 `Cat` 或 `Cat` 兼容 `Animal` 即可
+-   `animal` 赋值给 `tom`，需要满足 `Cat` 兼容 `Animal` 才行
 
 但是 `Cat` 并不兼容 `Animal`。
 
 而在前一个例子中，由于 `getCacheData('tom')` 是 `any` 类型，`any` 兼容 `Cat`，`Cat` 也兼容 `any`，故
 
 ```ts
-const tom = getCacheData('tom') as Cat;
+const tom = getCacheData("tom") as Cat;
 ```
 
 等价于
 
 ```ts
-const tom: Cat = getCacheData('tom');
+const tom: Cat = getCacheData("tom");
 ```
 
 知道了它们的核心区别，就知道了类型声明是比类型断言更加严格的。
@@ -569,7 +573,7 @@ interface Cat {
     run(): void;
 }
 
-const tom = getCacheData('tom') as Cat;
+const tom = getCacheData("tom") as Cat;
 tom.run();
 ```
 
@@ -585,7 +589,7 @@ interface Cat {
     run(): void;
 }
 
-const tom = getCacheData<Cat>('tom');
+const tom = getCacheData<Cat>("tom");
 tom.run();
 ```
 
@@ -593,9 +597,9 @@ tom.run();
 
 ## 参考
 
-- [TypeScript Deep Dive / Type Assertion](https://basarat.gitbooks.io/typescript/content/docs/types/type-assertion.html)
-- [Advanced Types # Type Guards and Differentiating Types](http://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-differentiating-types)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Advanced%20Types.html#类型保护与区分类型（type-guards-and-differentiating-types）)）
-- [TypeScript 的设计理念][]
+-   [TypeScript Deep Dive / Type Assertion](https://basarat.gitbooks.io/typescript/content/docs/types/type-assertion.html)
+-   [Advanced Types # Type Guards and Differentiating Types](http://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-differentiating-types)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Advanced%20Types.html#类型保护与区分类型（type-guards-and-differentiating-types）)）
+-   [TypeScript 的设计理念][]
 
-[TypeScript 的设计理念]: https://github.com/Microsoft/TypeScript/wiki/TypeScript-Design-Goals
+[typescript 的设计理念]: https://github.com/Microsoft/TypeScript/wiki/TypeScript-Design-Goals
 [泛型]: ../advanced/generics.md

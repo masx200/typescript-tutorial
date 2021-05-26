@@ -6,20 +6,20 @@
 
 由于本章涉及大量新语法，故在本章开头列出新语法的索引，方便大家在使用这些新语法时能快速查找到对应的讲解：
 
-- [`declare var`](#declare-var) 声明全局变量
-- [`declare function`](#declare-function) 声明全局方法
-- [`declare class`](#declare-class) 声明全局类
-- [`declare enum`](#declare-enum) 声明全局枚举类型
-- [`declare namespace`](#declare-namespace) 声明（含有子属性的）全局对象
-- [`interface` 和 `type`](#interface-和-type) 声明全局类型
-- [`export`](#export) 导出变量
-- [`export namespace`](#export-namespace) 导出（含有子属性的）对象
-- [`export default`](#export-default) ES6 默认导出
-- [`export =`](#export-1) commonjs 导出模块
-- [`export as namespace`](#export-as-namespace) UMD 库声明全局变量
-- [`declare global`](#declare-global) 扩展全局变量
-- [`declare module`](#declare-module) 扩展模块
-- [`/// <reference />`](#san-xie-xian-zhi-ling) 三斜线指令
+-   [`declare var`](#declare-var) 声明全局变量
+-   [`declare function`](#declare-function) 声明全局方法
+-   [`declare class`](#declare-class) 声明全局类
+-   [`declare enum`](#declare-enum) 声明全局枚举类型
+-   [`declare namespace`](#declare-namespace) 声明（含有子属性的）全局对象
+-   [`interface` 和 `type`](#interface-和-type) 声明全局类型
+-   [`export`](#export) 导出变量
+-   [`export namespace`](#export-namespace) 导出（含有子属性的）对象
+-   [`export default`](#export-default) ES6 默认导出
+-   [`export =`](#export-1) commonjs 导出模块
+-   [`export as namespace`](#export-as-namespace) UMD 库声明全局变量
+-   [`declare global`](#declare-global) 扩展全局变量
+-   [`declare module`](#declare-module) 扩展模块
+-   [`/// <reference />`](#san-xie-xian-zhi-ling) 三斜线指令
 
 ## 什么是声明语句
 
@@ -28,15 +28,15 @@
 我们通常这样获取一个 `id` 是 `foo` 的元素：
 
 ```js
-$('#foo');
+$("#foo");
 // or
-jQuery('#foo');
+jQuery("#foo");
 ```
 
 但是在 ts 中，编译器并不知道 `$` 或 `jQuery` 是什么东西[<sup>1</sup>](https://github.com/xcatliu/typescript-tutorial/tree/master/examples/declaration-files/01-jquery)：
 
 ```ts
-jQuery('#foo');
+jQuery("#foo");
 // ERROR: Cannot find name 'jQuery'.
 ```
 
@@ -45,13 +45,13 @@ jQuery('#foo');
 ```ts
 declare var jQuery: (selector: string) => any;
 
-jQuery('#foo');
+jQuery("#foo");
 ```
 
 上例中，`declare var` 并没有真的定义一个变量，只是定义了全局变量 `jQuery` 的类型，仅仅会用于编译时的检查，在编译结果中会被删除。它编译结果是：
 
 ```js
-jQuery('#foo');
+jQuery("#foo");
 ```
 
 除了 `declare var` 之外，还有其他很多种声明语句，将会在后面详细介绍。
@@ -69,7 +69,7 @@ declare var jQuery: (selector: string) => any;
 ```ts
 // src/index.ts
 
-jQuery('#foo');
+jQuery("#foo");
 ```
 
 声明文件必需以 `.d.ts` 为后缀。
@@ -110,12 +110,12 @@ npm install @types/jquery --save-dev
 
 库的使用场景主要有以下几种：
 
-- [全局变量](#quan-ju-bian-liang)：通过 `<script>` 标签引入第三方库，注入全局变量
-- [npm 包](#npm-bao)：通过 `import foo from 'foo'` 导入，符合 ES6 模块规范
-- [UMD 库](#umd-ku)：既可以通过 `<script>` 标签引入，又可以通过 `import` 导入
-- [直接扩展全局变量](#zhi-jie-kuo-zhan-quan-ju-bian-liang)：通过 `<script>` 标签引入后，改变一个全局变量的结构
-- [在 npm 包或 UMD 库中扩展全局变量](#zai-npm-bao-huo-umd-ku-zhong-kuo-zhan-quan-ju-bian-liang)：引用 npm 包或 UMD 库后，改变一个全局变量的结构
-- [模块插件](#mo-kuai-cha-jian)：通过 `<script>` 或 `import` 导入后，改变另一个模块的结构
+-   [全局变量](#quan-ju-bian-liang)：通过 `<script>` 标签引入第三方库，注入全局变量
+-   [npm 包](#npm-bao)：通过 `import foo from 'foo'` 导入，符合 ES6 模块规范
+-   [UMD 库](#umd-ku)：既可以通过 `<script>` 标签引入，又可以通过 `import` 导入
+-   [直接扩展全局变量](#zhi-jie-kuo-zhan-quan-ju-bian-liang)：通过 `<script>` 标签引入后，改变一个全局变量的结构
+-   [在 npm 包或 UMD 库中扩展全局变量](#zai-npm-bao-huo-umd-ku-zhong-kuo-zhan-quan-ju-bian-liang)：引用 npm 包或 UMD 库后，改变一个全局变量的结构
+-   [模块插件](#mo-kuai-cha-jian)：通过 `<script>` 或 `import` 导入后，改变另一个模块的结构
 
 ### 全局变量
 
@@ -135,12 +135,12 @@ npm install @types/jquery --save-dev
 
 全局变量的声明文件主要有以下几种语法：
 
-- [`declare var`](#declare-var) 声明全局变量
-- [`declare function`](#declare-function) 声明全局方法
-- [`declare class`](#declare-class) 声明全局类
-- [`declare enum`](#declare-enum) 声明全局枚举类型
-- [`declare namespace`](#declare-namespace) 声明（含有子属性的）全局对象
-- [`interface` 和 `type`](#interface-he-type) 声明全局类型
+-   [`declare var`](#declare-var) 声明全局变量
+-   [`declare function`](#declare-function) 声明全局方法
+-   [`declare class`](#declare-class) 声明全局类
+-   [`declare enum`](#declare-enum) 声明全局枚举类型
+-   [`declare namespace`](#declare-namespace) 声明（含有子属性的）全局对象
+-   [`interface` 和 `type`](#interface-he-type) 声明全局类型
 
 #### `declare var`
 
@@ -155,9 +155,9 @@ declare let jQuery: (selector: string) => any;
 ```ts
 // src/index.ts
 
-jQuery('#foo');
+jQuery("#foo");
 // 使用 declare let 定义的 jQuery 类型，允许修改这个全局变量
-jQuery = function(selector) {
+jQuery = function (selector) {
     return document.querySelector(selector);
 };
 ```
@@ -169,9 +169,9 @@ jQuery = function(selector) {
 
 declare const jQuery: (selector: string) => any;
 
-jQuery('#foo');
+jQuery("#foo");
 // 使用 declare const 定义的 jQuery 类型，禁止修改这个全局变量
-jQuery = function(selector) {
+jQuery = function (selector) {
     return document.querySelector(selector);
 };
 // ERROR: Cannot assign to 'jQuery' because it is a constant or a read-only property.
@@ -182,7 +182,7 @@ jQuery = function(selector) {
 需要注意的是，声明语句中只能定义类型，切勿在声明语句中定义具体的实现[<sup>5</sup>](https://github.com/xcatliu/typescript-tutorial/tree/master/examples/declaration-files/05-declare-jquery-value)：
 
 ```ts
-declare const jQuery = function(selector) {
+declare const jQuery = function (selector) {
     return document.querySelector(selector);
 };
 // ERROR: An implementation cannot be declared in ambient contexts.
@@ -201,7 +201,7 @@ declare function jQuery(selector: string): any;
 ```ts
 // src/index.ts
 
-jQuery('#foo');
+jQuery("#foo");
 ```
 
 在函数类型的声明语句中，函数重载也是支持的[<sup>6</sup>](https://github.com/xcatliu/typescript-tutorial/tree/master/examples/declaration-files/06-declare-function)：
@@ -216,9 +216,9 @@ declare function jQuery(domReadyCallback: () => any): any;
 ```ts
 // src/index.ts
 
-jQuery('#foo');
-jQuery(function() {
-    alert('Dom Ready!');
+jQuery("#foo");
+jQuery(function () {
+    alert("Dom Ready!");
 });
 ```
 
@@ -239,7 +239,7 @@ declare class Animal {
 ```ts
 // src/index.ts
 
-let cat = new Animal('Tom');
+let cat = new Animal("Tom");
 ```
 
 同样的，`declare class` 语句也只能用来定义类型，不能用来定义具体的实现，比如定义 `sayHi` 方法的具体实现则会报错：
@@ -252,7 +252,7 @@ declare class Animal {
     constructor(name: string);
     sayHi() {
         return `My name is ${this.name}`;
-    };
+    }
     // ERROR: An implementation cannot be declared in ambient contexts.
 }
 ```
@@ -268,14 +268,19 @@ declare enum Directions {
     Up,
     Down,
     Left,
-    Right
+    Right,
 }
 ```
 
 ```ts
 // src/index.ts
 
-let directions = [Directions.Up, Directions.Down, Directions.Left, Directions.Right];
+let directions = [
+    Directions.Up,
+    Directions.Down,
+    Directions.Left,
+    Directions.Right,
+];
 ```
 
 与其他全局变量的类型声明一致，`declare enum` 仅用来定义类型，而不是具体的值。
@@ -283,7 +288,12 @@ let directions = [Directions.Up, Directions.Down, Directions.Left, Directions.Ri
 `Directions.d.ts` 仅仅会用于编译时的检查，声明文件里的内容在编译结果中会被删除。它编译结果是：
 
 ```js
-var directions = [Directions.Up, Directions.Down, Directions.Left, Directions.Right];
+var directions = [
+    Directions.Up,
+    Directions.Down,
+    Directions.Left,
+    Directions.Right,
+];
 ```
 
 其中 `Directions` 是由第三方库定义好的全局变量。
@@ -311,7 +321,7 @@ declare namespace jQuery {
 ```ts
 // src/index.ts
 
-jQuery.ajax('/api/get_something');
+jQuery.ajax("/api/get_something");
 ```
 
 注意，在 `declare namespace` 内部，我们直接使用 `function ajax` 来声明函数，而不是使用 `declare function ajax`。类似的，也可以使用 `const`, `class`, `enum` 等语句[<sup>9</sup>](https://github.com/xcatliu/typescript-tutorial/tree/master/examples/declaration-files/09-declare-namespace)：
@@ -323,10 +333,10 @@ declare namespace jQuery {
     function ajax(url: string, settings?: any): void;
     const version: number;
     class Event {
-        blur(eventType: EventType): void
+        blur(eventType: EventType): void;
     }
     enum EventType {
-        CustomClick
+        CustomClick,
     }
 }
 ```
@@ -334,7 +344,7 @@ declare namespace jQuery {
 ```ts
 // src/index.ts
 
-jQuery.ajax('/api/get_something');
+jQuery.ajax("/api/get_something");
 console.log(jQuery.version);
 const e = new jQuery.Event();
 e.blur(jQuery.EventType.CustomClick);
@@ -358,13 +368,13 @@ declare namespace jQuery {
 ```ts
 // src/index.ts
 
-jQuery.ajax('/api/get_something');
+jQuery.ajax("/api/get_something");
 jQuery.fn.extend({
-    check: function() {
-        return this.each(function() {
+    check: function () {
+        return this.each(function () {
             this.checked = true;
         });
-    }
+    },
 });
 ```
 
@@ -382,11 +392,11 @@ declare namespace jQuery.fn {
 // src/index.ts
 
 jQuery.fn.extend({
-    check: function() {
-        return this.each(function() {
+    check: function () {
+        return this.each(function () {
             this.checked = true;
         });
-    }
+    },
 });
 ```
 
@@ -398,7 +408,7 @@ jQuery.fn.extend({
 // src/jQuery.d.ts
 
 interface AjaxSettings {
-    method?: 'GET' | 'POST'
+    method?: "GET" | "POST";
     data?: any;
 }
 declare namespace jQuery {
@@ -412,12 +422,12 @@ declare namespace jQuery {
 // src/index.ts
 
 let settings: AjaxSettings = {
-    method: 'POST',
+    method: "POST",
     data: {
-        name: 'foo'
-    }
+        name: "foo",
+    },
 };
-jQuery.ajax('/api/post_something', settings);
+jQuery.ajax("/api/post_something", settings);
 ```
 
 `type` 与 `interface` 类似，不再赘述。
@@ -431,7 +441,7 @@ jQuery.ajax('/api/post_something', settings);
 
 declare namespace jQuery {
     interface AjaxSettings {
-        method?: 'GET' | 'POST'
+        method?: "GET" | "POST";
         data?: any;
     }
     function ajax(url: string, settings?: AjaxSettings): void;
@@ -444,12 +454,12 @@ declare namespace jQuery {
 // src/index.ts
 
 let settings: jQuery.AjaxSettings = {
-    method: 'POST',
+    method: "POST",
     data: {
-        name: 'foo'
-    }
+        name: "foo",
+    },
 };
-jQuery.ajax('/api/post_something', settings);
+jQuery.ajax("/api/post_something", settings);
 ```
 
 #### 声明合并
@@ -468,8 +478,8 @@ declare namespace jQuery {
 ```ts
 // src/index.ts
 
-jQuery('#foo');
-jQuery.ajax('/api/get_something');
+jQuery("#foo");
+jQuery.ajax("/api/get_something");
 ```
 
 关于声明合并的更多用法，可以查看[声明合并](../advanced/declaration-merging.md)章节。
@@ -522,10 +532,10 @@ jQuery.ajax('/api/get_something');
 
 npm 包的声明文件主要有以下几种语法：
 
-- [`export`](#export) 导出变量
-- [`export namespace`](#export-namespace) 导出（含有子属性的）对象
-- [`export default`](#export-default) ES6 默认导出
-- [`export =`](#export-1) commonjs 导出模块
+-   [`export`](#export) 导出变量
+-   [`export namespace`](#export-namespace) 导出（含有子属性的）对象
+-   [`export default`](#export-default) ES6 默认导出
+-   [`export =`](#export-1) commonjs 导出模块
 
 #### `export`
 
@@ -546,7 +556,7 @@ export enum Directions {
     Up,
     Down,
     Left,
-    Right
+    Right,
 }
 export interface Options {
     data: any;
@@ -558,16 +568,21 @@ export interface Options {
 ```ts
 // src/index.ts
 
-import { name, getName, Animal, Directions, Options } from 'foo';
+import { name, getName, Animal, Directions, Options } from "foo";
 
 console.log(name);
 let myName = getName();
-let cat = new Animal('Tom');
-let directions = [Directions.Up, Directions.Down, Directions.Left, Directions.Right];
+let cat = new Animal("Tom");
+let directions = [
+    Directions.Up,
+    Directions.Down,
+    Directions.Left,
+    Directions.Right,
+];
 let options: Options = {
     data: {
-        name: 'foo'
-    }
+        name: "foo",
+    },
 };
 ```
 
@@ -588,7 +603,7 @@ declare enum Directions {
     Up,
     Down,
     Left,
-    Right
+    Right,
 }
 interface Options {
     data: any;
@@ -617,7 +632,7 @@ export namespace foo {
 ```ts
 // src/index.ts
 
-import { foo } from 'foo';
+import { foo } from "foo";
 
 console.log(foo.name);
 foo.bar.baz();
@@ -638,7 +653,7 @@ export default function foo(): string;
 ```ts
 // src/index.ts
 
-import foo from 'foo';
+import foo from "foo";
 
 foo();
 ```
@@ -666,7 +681,7 @@ declare enum Directions {
     Up,
     Down,
     Left,
-    Right
+    Right,
 }
 
 export default Directions;
@@ -683,7 +698,7 @@ declare enum Directions {
     Up,
     Down,
     Left,
-    Right
+    Right,
 }
 ```
 
@@ -702,25 +717,25 @@ exports.bar = bar;
 
 ```js
 // 整体导入
-const foo = require('foo');
+const foo = require("foo");
 // 单个导入
-const bar = require('foo').bar;
+const bar = require("foo").bar;
 ```
 
 第二种方式是 `import ... from`，注意针对整体导出，需要使用 `import * as` 来导入：
 
 ```ts
 // 整体导入
-import * as foo from 'foo';
+import * as foo from "foo";
 // 单个导入
-import { bar } from 'foo';
+import { bar } from "foo";
 ```
 
 第三种方式是 `import ... require`，这也是 ts 官方推荐的方式：
 
 ```ts
 // 整体导入
-import foo = require('foo');
+import foo = require("foo");
 // 单个导入
 import bar = foo.bar;
 ```
@@ -787,7 +802,7 @@ interface String {
     prependHello(): string;
 }
 
-'foo'.prependHello();
+"foo".prependHello();
 ```
 
 通过声明合并，使用 `interface String` 即可给 `String` 添加属性或方法。
@@ -812,7 +827,7 @@ interface JQueryStatic {
 // src/index.ts
 
 jQuery.foo({
-    bar: ''
+    bar: "",
 });
 ```
 
@@ -839,7 +854,7 @@ export {};
 ```ts
 // src/index.ts
 
-'bar'.prependHello();
+"bar".prependHello();
 ```
 
 注意即使此声明文件不需要导出任何东西，仍然需要导出一个空对象，用来告诉编译器这是一个模块的声明文件，而不是一个全局变量的声明文件。
@@ -855,9 +870,9 @@ export {};
 ```ts
 // types/moment-plugin/index.d.ts
 
-import * as moment from 'moment';
+import * as moment from "moment";
 
-declare module 'moment' {
+declare module "moment" {
     export function foo(): moment.CalendarKey;
 }
 ```
@@ -865,8 +880,8 @@ declare module 'moment' {
 ```ts
 // src/index.ts
 
-import * as moment from 'moment';
-import 'moment-plugin';
+import * as moment from "moment";
+import "moment-plugin";
 
 moment.foo();
 ```
@@ -876,13 +891,13 @@ moment.foo();
 ```ts
 // types/foo-bar.d.ts
 
-declare module 'foo' {
+declare module "foo" {
     export interface Foo {
         foo: string;
     }
 }
 
-declare module 'bar' {
+declare module "bar" {
     export function bar(): string;
 }
 ```
@@ -890,8 +905,8 @@ declare module 'bar' {
 ```ts
 // src/index.ts
 
-import { Foo } from 'foo';
-import * as bar from 'bar';
+import { Foo } from "foo";
+import * as bar from "bar";
 
 let f: Foo;
 bar.bar();
@@ -904,9 +919,9 @@ bar.bar();
 ```ts
 // types/moment-plugin/index.d.ts
 
-import * as moment from 'moment';
+import * as moment from "moment";
 
-declare module 'moment' {
+declare module "moment" {
     export function foo(): moment.CalendarKey;
 }
 ```
@@ -921,8 +936,8 @@ declare module 'moment' {
 
 类似于声明文件中的 `import`，它可以用来导入另一个声明文件。与 `import` 的区别是，当且仅当在以下几个场景下，我们才需要使用三斜线指令替代 `import`：
 
-- 当我们在**书写**一个全局变量的声明文件时
-- 当我们需要**依赖**一个全局变量的声明文件时
+-   当我们在**书写**一个全局变量的声明文件时
+-   当我们需要**依赖**一个全局变量的声明文件时
 
 ##### **书写**一个全局变量的声明文件
 
@@ -961,7 +976,7 @@ export function foo(p: NodeJS.Process): string;
 ```ts
 // src/index.ts
 
-import { foo } from 'node-plugin';
+import { foo } from "node-plugin";
 
 foo(global.process);
 ```
@@ -1007,7 +1022,7 @@ export = jQuery;
     "compilerOptions": {
         "module": "commonjs",
         "outDir": "lib",
-        "declaration": true,
+        "declaration": true
     }
 }
 ```
@@ -1037,10 +1052,10 @@ export = jQuery;
 ```ts
 // src/index.ts
 
-export * from './bar';
+export * from "./bar";
 
 export default function foo() {
-    return 'foo';
+    return "foo";
 }
 ```
 
@@ -1048,14 +1063,14 @@ export default function foo() {
 // src/bar/index.ts
 
 export function bar() {
-    return 'bar';
+    return "bar";
 }
 ```
 
 ```ts
 // lib/index.d.ts
 
-export * from './bar';
+export * from "./bar";
 export default function foo(): string;
 ```
 
@@ -1071,9 +1086,9 @@ export declare function bar(): string;
 
 除了 `declaration` 选项之外，还有几个选项也与自动生成声明文件有关，这里只简单列举出来，不做详细演示了：
 
-- `declarationDir` 设置生成 `.d.ts` 文件的目录
-- `declarationMap` 对每个 `.d.ts` 文件，都生成对应的 `.d.ts.map`（sourcemap）文件
-- `emitDeclarationOnly` 仅生成 `.d.ts` 文件，不生成 `.js` 文件
+-   `declarationDir` 设置生成 `.d.ts` 文件的目录
+-   `declarationMap` 对每个 `.d.ts` 文件，都生成对应的 `.d.ts.map`（sourcemap）文件
+-   `emitDeclarationOnly` 仅生成 `.d.ts` 文件，不生成 `.js` 文件
 
 ## 发布声明文件
 
@@ -1094,9 +1109,9 @@ export declare function bar(): string;
 
 如果是手动写的声明文件，那么需要满足以下条件之一，才能被正确的识别：
 
-- 给 `package.json` 中的 `types` 或 `typings` 字段指定一个类型声明文件地址
-- 在项目根目录下，编写一个 `index.d.ts` 文件
-- 针对入口文件（`package.json` 中的 `main` 字段指定的入口文件），编写一个同名不同后缀的 `.d.ts` 文件
+-   给 `package.json` 中的 `types` 或 `typings` 字段指定一个类型声明文件地址
+-   在项目根目录下，编写一个 `index.d.ts` 文件
+-   针对入口文件（`package.json` 中的 `main` 字段指定的入口文件），编写一个同名不同后缀的 `.d.ts` 文件
 
 第一种方式是给 `package.json` 中的 `types` 或 `typings` 字段指定一个类型声明文件地址。比如：
 
@@ -1105,7 +1120,7 @@ export declare function bar(): string;
     "name": "foo",
     "version": "1.0.0",
     "main": "lib/index.js",
-    "types": "foo.d.ts",
+    "types": "foo.d.ts"
 }
 ```
 
@@ -1145,9 +1160,9 @@ pull-request 需要符合它们的规范，并且通过测试，才能被合并�
 
 ## 参考
 
-- [Writing Declaration Files](http://www.typescriptlang.org/docs/handbook/writing-declaration-files.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/declaration%20files/Introduction.html)）
-- [Triple-Slash Directives](http://www.typescriptlang.org/docs/handbook/triple-slash-directives.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Triple-Slash%20Directives.html)）
-- [typeRoots or paths](https://github.com/Microsoft/TypeScript/issues/22217#issuecomment-369783776)
-- [DefinitelyTyped][]
+-   [Writing Declaration Files](http://www.typescriptlang.org/docs/handbook/writing-declaration-files.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/declaration%20files/Introduction.html)）
+-   [Triple-Slash Directives](http://www.typescriptlang.org/docs/handbook/triple-slash-directives.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Triple-Slash%20Directives.html)）
+-   [typeRoots or paths](https://github.com/Microsoft/TypeScript/issues/22217#issuecomment-369783776)
+-   [DefinitelyTyped][]
 
-[DefinitelyTyped]: https://github.com/DefinitelyTyped/DefinitelyTyped/
+[definitelytyped]: https://github.com/DefinitelyTyped/DefinitelyTyped/

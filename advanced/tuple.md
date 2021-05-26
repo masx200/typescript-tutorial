@@ -9,14 +9,14 @@
 定义一对值分别为 `string` 和 `number` 的元组：
 
 ```ts
-let tom: [string, number] = ['Tom', 25];
+let tom: [string, number] = ["Tom", 25];
 ```
 
 当赋值或访问一个已知索引的元素时，会得到正确的类型：
 
 ```ts
 let tom: [string, number];
-tom[0] = 'Tom';
+tom[0] = "Tom";
 tom[1] = 25;
 
 tom[0].slice(1);
@@ -27,19 +27,19 @@ tom[1].toFixed(2);
 
 ```ts
 let tom: [string, number];
-tom[0] = 'Tom';
+tom[0] = "Tom";
 ```
 
 但是当直接对元组类型的变量进行初始化或者赋值的时候，需要提供所有元组类型中指定的项。
 
 ```ts
 let tom: [string, number];
-tom = ['Tom', 25];
+tom = ["Tom", 25];
 ```
 
 ```ts
 let tom: [string, number];
-tom = ['Tom'];
+tom = ["Tom"];
 
 // Property '1' is missing in type '[string]' but required in type '[string, number]'.
 ```
@@ -50,8 +50,8 @@ tom = ['Tom'];
 
 ```ts
 let tom: [string, number];
-tom = ['Tom', 25];
-tom.push('male');
+tom = ["Tom", 25];
+tom.push("male");
 tom.push(true);
 
 // Argument of type 'true' is not assignable to parameter of type 'string | number'.
@@ -59,4 +59,4 @@ tom.push(true);
 
 ## 参考
 
-- [Basic Types # Tuple](http://www.typescriptlang.org/docs/handbook/basic-types.html#tuple)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Basic%20Types.html#元组-tuple)）
+-   [Basic Types # Tuple](http://www.typescriptlang.org/docs/handbook/basic-types.html#tuple)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Basic%20Types.html#元组-tuple)）

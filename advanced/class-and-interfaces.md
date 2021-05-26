@@ -15,18 +15,17 @@ interface Alarm {
     alert(): void;
 }
 
-class Door {
-}
+class Door {}
 
 class SecurityDoor extends Door implements Alarm {
     alert() {
-        console.log('SecurityDoor alert');
+        console.log("SecurityDoor alert");
     }
 }
 
 class Car implements Alarm {
     alert() {
-        console.log('Car alert');
+        console.log("Car alert");
     }
 }
 ```
@@ -45,13 +44,13 @@ interface Light {
 
 class Car implements Alarm, Light {
     alert() {
-        console.log('Car alert');
+        console.log("Car alert");
     }
     lightOn() {
-        console.log('Car light on');
+        console.log("Car light on");
     }
     lightOff() {
-        console.log('Car light off');
+        console.log("Car light off");
     }
 }
 ```
@@ -93,7 +92,7 @@ interface Point3d extends Point {
     z: number;
 }
 
-let point3d: Point3d = {x: 1, y: 2, z: 3};
+let point3d: Point3d = { x: 1, y: 2, z: 3 };
 ```
 
 为什么 TypeScript 会支持接口继承类呢？
@@ -182,7 +181,7 @@ interface Point3d extends Point {
     z: number;
 }
 
-let point3d: Point3d = {x: 1, y: 2, z: 3};
+let point3d: Point3d = { x: 1, y: 2, z: 3 };
 ```
 
 当我们声明 `interface Point3d extends Point` 时，`Point3d` 继承的实际上是类 `Point` 的实例的类型。
@@ -234,4 +233,4 @@ let p2: PointInstanceType;
 
 ## 参考
 
-- [Interfaces](http://www.typescriptlang.org/docs/handbook/interfaces.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Interfaces.html)）
+-   [Interfaces](http://www.typescriptlang.org/docs/handbook/interfaces.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Interfaces.html)）

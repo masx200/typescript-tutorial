@@ -11,16 +11,18 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
-
 importScripts(
-  "https://cdn.jsdelivr.net/gh/masx200/typescript-tutorial@2.0.1/precache-manifest.31adc726033b2e9cbc49a508c80e01ca.js"
+    "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js"
 );
 
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
+importScripts(
+    "https://cdn.jsdelivr.net/gh/masx200/typescript-tutorial@2.0.1/precache-manifest.31adc726033b2e9cbc49a508c80e01ca.js"
+);
+
+self.addEventListener("message", (event) => {
+    if (event.data && event.data.type === "SKIP_WAITING") {
+        self.skipWaiting();
+    }
 });
 
 workbox.core.clientsClaim();
@@ -33,6 +35,26 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/.*\.(?:js|html|\/)$/, new workbox.strategies.NetworkFirst(), 'GET');
-workbox.routing.registerRoute(/.*\.(?:xml|json|md|css)$/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
-workbox.routing.registerRoute(/\.(?:png|jpg|jpeg|svg|gif)$/, new workbox.strategies.CacheFirst({ "cacheName":"image-cache", plugins: [new workbox.expiration.Plugin({ maxEntries: 10, purgeOnQuotaError: false })] }), 'GET');
+workbox.routing.registerRoute(
+    /.*\.(?:js|html|\/)$/,
+    new workbox.strategies.NetworkFirst(),
+    "GET"
+);
+workbox.routing.registerRoute(
+    /.*\.(?:xml|json|md|css)$/,
+    new workbox.strategies.StaleWhileRevalidate(),
+    "GET"
+);
+workbox.routing.registerRoute(
+    /\.(?:png|jpg|jpeg|svg|gif)$/,
+    new workbox.strategies.CacheFirst({
+        cacheName: "image-cache",
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 10,
+                purgeOnQuotaError: false,
+            }),
+        ],
+    }),
+    "GET"
+);

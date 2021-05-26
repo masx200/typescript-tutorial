@@ -34,23 +34,23 @@ document.getElementById("root").innerHTML = `<div>
 
 // var MathJax = window.MathJax;
 import modulemathjax from "./MathJax/index";
-(MathJax => {
-  // console.log(module);
-  // var MathJax = module.default;
-  MathJax.Hub.Config({
-    tex2jax: { inlineMath: [["$", "$"]], processRefs: !0 },
-    TeX: {
-      equationNumbers: {
-        autoNumber: "all",
-        formatID: function(n) {
-          return "(" + n + ")";
+((MathJax) => {
+    // console.log(module);
+    // var MathJax = module.default;
+    MathJax.Hub.Config({
+        tex2jax: { inlineMath: [["$", "$"]], processRefs: !0 },
+        TeX: {
+            equationNumbers: {
+                autoNumber: "all",
+                formatID: function (n) {
+                    return "(" + n + ")";
+                },
+                formatURL: function () {
+                    return null;
+                },
+            },
         },
-        formatURL: function() {
-          return null;
-        }
-      }
-    }
-  });
+    });
 })(modulemathjax);
 
 import "./render";
@@ -81,21 +81,21 @@ import "./render";
 
 import ClipboardJS from "./clipboard.js";
 
-(ClipboardJS => {
-  // console.log(m);
-  // let ClipboardJS = m.default;
-  // const nclp =
-  new ClipboardJS(".btn").on("success", function(e) {
-    if (!e.text) {
-      console.log("复制内容空");
-    } else {
-      //   console.info("Action:", e.action);
-      console.info("Text:", e.text);
-    }
+((ClipboardJS) => {
+    // console.log(m);
+    // let ClipboardJS = m.default;
+    // const nclp =
+    new ClipboardJS(".btn").on("success", function (e) {
+        if (!e.text) {
+            console.log("复制内容空");
+        } else {
+            //   console.info("Action:", e.action);
+            console.info("Text:", e.text);
+        }
 
-    e.clearSelection();
-  });
-  // console.log(nclp);
+        e.clearSelection();
+    });
+    // console.log(nclp);
 })(ClipboardJS);
 import app from "./app-home.vue";
 import vue from "vue/dist/vue.esm";

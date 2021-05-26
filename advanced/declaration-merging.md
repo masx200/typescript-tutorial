@@ -10,10 +10,10 @@
 function reverse(x: number): number;
 function reverse(x: string): string;
 function reverse(x: number | string): number | string {
-    if (typeof x === 'number') {
-        return Number(x.toString().split('').reverse().join(''));
-    } else if (typeof x === 'string') {
-        return x.split('').reverse().join('');
+    if (typeof x === "number") {
+        return Number(x.toString().split("").reverse().join(""));
+    } else if (typeof x === "string") {
+        return x.split("").reverse().join("");
     }
 }
 ```
@@ -47,7 +47,7 @@ interface Alarm {
     price: number;
 }
 interface Alarm {
-    price: number;  // 虽然重复了，但是类型都是 `number`，所以不会报错
+    price: number; // 虽然重复了，但是类型都是 `number`，所以不会报错
     weight: number;
 }
 ```
@@ -57,7 +57,7 @@ interface Alarm {
     price: number;
 }
 interface Alarm {
-    price: string;  // 类型不一致，会报错
+    price: string; // 类型不一致，会报错
     weight: number;
 }
 
@@ -94,4 +94,4 @@ interface Alarm {
 
 ## 参考
 
-- [Declaration Merging](http://www.typescriptlang.org/docs/handbook/declaration-merging.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Declaration%20Merging.html)）
+-   [Declaration Merging](http://www.typescriptlang.org/docs/handbook/declaration-merging.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Declaration%20Merging.html)）

@@ -9,7 +9,7 @@ type Name = string;
 type NameResolver = () => string;
 type NameOrResolver = Name | NameResolver;
 function getName(n: NameOrResolver): Name {
-    if (typeof n === 'string') {
+    if (typeof n === "string") {
         return n;
     } else {
         return n();
@@ -23,4 +23,4 @@ function getName(n: NameOrResolver): Name {
 
 ## 参考
 
-- [Advanced Types # Type Aliases](http://www.typescriptlang.org/docs/handbook/advanced-types.html#type-aliases)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Advanced%20Types.html#类型别名)）
+-   [Advanced Types # Type Aliases](http://www.typescriptlang.org/docs/handbook/advanced-types.html#type-aliases)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Advanced%20Types.html#类型别名)）

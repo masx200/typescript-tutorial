@@ -1,6 +1,6 @@
 @media (max-width: 550px) {
-  /* 如果文档宽度小于 500 像素 */
-  hr#hidewidthless500 {
-    display: none;
-  }
+    /* 如果文档宽度小于 500 像素 */
+    hr#hidewidthless500 {
+        display: none;
+    }
 }

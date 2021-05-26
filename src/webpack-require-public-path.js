@@ -16,12 +16,12 @@
 var webpackpublicpath = __webpack_public_path__;
 var exporturl;
 if (
-  webpackpublicpath.startsWith("http://") ||
-  webpackpublicpath.startsWith("https://")
+    webpackpublicpath.startsWith("http://") ||
+    webpackpublicpath.startsWith("https://")
 ) {
-  exporturl = new URL(".", webpackpublicpath);
+    exporturl = new URL(".", webpackpublicpath);
 } else {
-  exporturl = new URL(".", new URL(webpackpublicpath, location.href));
+    exporturl = new URL(".", new URL(webpackpublicpath, location.href));
 }
 
 export default String(exporturl);

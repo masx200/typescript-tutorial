@@ -75,7 +75,7 @@ var infinityNumber = Infinity;
 使用 `string` 定义字符串类型：
 
 ```ts
-let myName: string = 'Tom';
+let myName: string = "Tom";
 let myAge: number = 25;
 
 // 模板字符串
@@ -86,10 +86,15 @@ I'll be ${myAge + 1} years old next month.`;
 编译结果：
 
 ```js
-var myName = 'Tom';
+var myName = "Tom";
 var myAge = 25;
 // 模板字符串
-var sentence = "Hello, my name is " + myName + ".\nI'll be " + (myAge + 1) + " years old next month.";
+var sentence =
+    "Hello, my name is " +
+    myName +
+    ".\nI'll be " +
+    (myAge + 1) +
+    " years old next month.";
 ```
 
 其中 <code>&#96;</code> 用来定义 [ES6 中的模板字符串][]，`${expr}` 用来在模板字符串中嵌入表达式。
@@ -100,7 +105,7 @@ JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用 `voi
 
 ```ts
 function alertName(): void {
-    alert('My name is Tom');
+    alert("My name is Tom");
 }
 ```
 
@@ -143,14 +148,14 @@ let num: number = u;
 
 ## 参考
 
-- [Basic Types](http://www.typescriptlang.org/docs/handbook/basic-types.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Basic%20Types.html)）
-- [Primitive data types][]
-- [ES6 中的新类型 `Symbol`][]
-- [ES6 中的二进制和八进制表示法][]
-- [ES6 中的模板字符串][]
+-   [Basic Types](http://www.typescriptlang.org/docs/handbook/basic-types.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Basic%20Types.html)）
+-   [Primitive data types][]
+-   [ES6 中的新类型 `Symbol`][]
+-   [ES6 中的二进制和八进制表示法][]
+-   [ES6 中的模板字符串][]
 
-[Primitive data types]: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
-[`Symbol`]: http://es6.ruanyifeng.com/#docs/symbol
-[`BigInt`]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/BigInt
-[ES6 中的二进制和八进制表示法]: http://es6.ruanyifeng.com/#docs/number#二进制和八进制表示法
-[ES6 中的模板字符串]: http://es6.ruanyifeng.com/#docs/string#模板字符串
+[primitive data types]: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
+[`symbol`]: http://es6.ruanyifeng.com/#docs/symbol
+[`bigint`]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+[es6 中的二进制和八进制表示法]: http://es6.ruanyifeng.com/#docs/number#二进制和八进制表示法
+[es6 中的模板字符串]: http://es6.ruanyifeng.com/#docs/string#模板字符串

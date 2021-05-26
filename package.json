@@ -1,19 +1,21 @@
- {
+{
     "name": "@masx200/typescript-tutorial",
-    "version": "2.0.1",
+    "version": "3.0.0",
     "scripts": {
         "start": "webpack-react-vue-spa-awesome-config start",
-        "build": "webpack-react-vue-spa-awesome-config build   --output-public-path=https://cdn.jsdelivr.net/gh/masx200/typescript-tutorial@2.0.1/ ",
-        "test": "webpack-react-vue-spa-awesome-config build"
+        "build": "webpack-react-vue-spa-awesome-config build    ",
+        "format": "prettier --write *.html *.js *.css *.md *.json *.vue */*.ts */*.html */**/*.js */*.css */*.md */*.json */*.vue */**/*.md"
     },
-    "description": "TypeScript 入门教程 从 JavaScript 程序员的角度总结思考\uFF0C循序渐进的理解 TypeScript",
+    "description": "TypeScript 入门教程 从 JavaScript 程序员的角度总结思考，循序渐进的理解 TypeScript",
     "main": "index.js",
     "directories": {},
     "repository": "git+https://github.com/masx200/typescript-tutorial.git",
     "keywords": [],
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
     "license": "ISC",
-    "bugs": { "url": "https://github.com/masx200/typescript-tutorial/issues" },
+    "bugs": {
+        "url": "https://github.com/masx200/typescript-tutorial/issues"
+    },
     "homepage": "https://github.com/masx200/typescript-tutorial#readme",
     "devDependencies": {
         "@masx200/markdown-reader": "https://github.com/masx200/markdown-reader.git",
@@ -34,4 +36,4 @@
         "webpack": "4.44.1"
     },
     "dependencies": {}
-};
+}

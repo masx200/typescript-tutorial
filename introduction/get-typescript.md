@@ -30,11 +30,11 @@ TypeScript 最大的优势之一便是增强了编辑器和 IDE 的功能，包�
 
 获取其他编辑器或 IDE 对 TypeScript 的支持：
 
-- [Sublime Text](https://github.com/Microsoft/TypeScript-Sublime-Plugin)
-- [WebStorm](https://www.jetbrains.com/webstorm/)
-- [Vim](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support#vim)
-- [Emacs](https://github.com/ananthakumaran/tide)
-- [Eclipse](https://github.com/palantir/eclipse-typescript)
-- [Atom](https://atom.io/packages/atom-typescript)
-- [Visual Studio 2019](https://marketplace.visualstudio.com/search?term=TypeScriptTeam&target=VS&category=All%20categories&vsVersion=vs2019&sortBy=UpdatedDate)
-- [Visual Studio 2017](https://marketplace.visualstudio.com/search?term=TypeScriptTeam&target=VS&category=All%20categories&vsVersion=vs15&sortBy=UpdatedDate)
+-   [Sublime Text](https://github.com/Microsoft/TypeScript-Sublime-Plugin)
+-   [WebStorm](https://www.jetbrains.com/webstorm/)
+-   [Vim](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support#vim)
+-   [Emacs](https://github.com/ananthakumaran/tide)
+-   [Eclipse](https://github.com/palantir/eclipse-typescript)
+-   [Atom](https://atom.io/packages/atom-typescript)
+-   [Visual Studio 2019](https://marketplace.visualstudio.com/search?term=TypeScriptTeam&target=VS&category=All%20categories&vsVersion=vs2019&sortBy=UpdatedDate)
+-   [Visual Studio 2017](https://marketplace.visualstudio.com/search?term=TypeScriptTeam&target=VS&category=All%20categories&vsVersion=vs15&sortBy=UpdatedDate)

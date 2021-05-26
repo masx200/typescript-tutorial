@@ -2,8 +2,8 @@
 
 2019 年 1 月，[TypeScirpt 官方决定全面采用 ESLint](https://www.oschina.net/news/103818/future-typescript-eslint) 作为代码检查的工具，并创建了一个新项目 [typescript-eslint][]，提供了 TypeScript 文件的解析器 [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/parser) 和相关的配置选项 [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin) 等。而之前的两个 lint 解决方案都将弃用：
 
-- [typescript-eslint-parser](https://github.com/eslint/typescript-eslint-parser) 已停止维护
-- [TSLint](https://palantir.github.io/tslint/) 将提供迁移工具，并在 typescript-eslint 的功能足够完整后停止维护 TSLint（Once we consider ESLint feature-complete w.r.t. TSLint, we will deprecate TSLint and help users migrate to ESLint<sup>[1](https://medium.com/palantir/tslint-in-2019-1a144c2317a9)</sup>）
+-   [typescript-eslint-parser](https://github.com/eslint/typescript-eslint-parser) 已停止维护
+-   [TSLint](https://palantir.github.io/tslint/) 将提供迁移工具，并在 typescript-eslint 的功能足够完整后停止维护 TSLint（Once we consider ESLint feature-complete w.r.t. TSLint, we will deprecate TSLint and help users migrate to ESLint<sup>[1](https://medium.com/palantir/tslint-in-2019-1a144c2317a9)</sup>）
 
 综上所述，目前以及将来的 TypeScript 的代码检查方案就是 [typescript-eslint][]。
 
@@ -19,17 +19,17 @@
 
 因为 TypeScript 关注的重心是类型的检查，而不是代码风格。当团队的人员越来越多时，同样的逻辑不同的人写出来可能会有很大的区别：
 
-- 缩进应该是四个空格还是两个空格？
-- 是否应该禁用 `var`？
-- 接口名是否应该以 `I` 开头？
-- 是否应该强制使用 `===` 而不是 `==`？
+-   缩进应该是四个空格还是两个空格？
+-   是否应该禁用 `var`？
+-   接口名是否应该以 `I` 开头？
+-   是否应该强制使用 `===` 而不是 `==`？
 
 这些问题 TypeScript 不会关注，但是却影响到多人协作开发时的效率、代码的可理解性以及可维护性。
 
 下面来看一个具体的例子：
 
 ```ts
-var myName = 'Tom';
+var myName = "Tom";
 
 console.log(`My name is ${myNane}`);
 console.log(`My name is ${myName.toStrng()}`);
@@ -40,7 +40,7 @@ console.log(`My name is ${myName.toStrng()}`);
 分别用 tsc 编译和 eslint 检查后，报错信息如下：
 
 ```ts
-var myName = 'Tom';
+var myName = "Tom";
 // eslint 报错信息：
 // Unexpected var, use let or const instead.eslint(no-var)
 
@@ -54,11 +54,11 @@ console.log(`My name is ${myName.toStrng()}`);
 // Property 'toStrng' does not exist on type 'string'. Did you mean 'toString'?
 ```
 
-| 存在的问题 | `tsc` 是否报错 | `eslint` 是否报错 |
-| --- | --- | --- |
-| 应该使用 `let` 或 `const` 而不是 `var` | ❌ | ✅ |
-| `myName` 被误写成了 `myNane` | ✅ | ✅ |
-| `toString` 被误写成了 `toStrng` | ✅️ | ❌ |
+| 存在的问题                             | `tsc` 是否报错 | `eslint` 是否报错 |
+| -------------------------------------- | -------------- | ----------------- |
+| 应该使用 `let` 或 `const` 而不是 `var` | ❌             | ✅                |
+| `myName` 被误写成了 `myNane`           | ✅             | ✅                |
+| `toString` 被误写成了 `toStrng`        | ✅️            | ❌                |
 
 上例中，我们使用了 `var` 来定义一个变量，但其实 ES6 中有更先进的语法 `let` 和 `const`，此时就可以通过 `eslint` 检查出来，提示我们应该使用 `let` 或 `const` 而不是 `var`。
 
@@ -100,18 +100,18 @@ ESLint 需要一个配置文件来决定对哪些规则进行检查，配置文�
 
 ```js
 module.exports = {
-    parser: '@typescript-eslint/parser',
-    plugins: ['@typescript-eslint'],
+    parser: "@typescript-eslint/parser",
+    plugins: ["@typescript-eslint"],
     rules: {
         // 禁止使用 var
-        'no-var': "error",
+        "no-var": "error",
         // 优先使用 interface 而不是 type
-        '@typescript-eslint/consistent-type-definitions': [
+        "@typescript-eslint/consistent-type-definitions": [
             "error",
-            "interface"
-        ]
-    }
-}
+            "interface",
+        ],
+    },
+};
 ```
 
 以上配置中，我们指定了两个规则，其中 `no-var` 是 ESLint 原生的规则，`@typescript-eslint/consistent-type-definitions` 是 `@typescript-eslint/eslint-plugin` 新增的规则。
@@ -122,9 +122,9 @@ module.exports = {
 
 关闭、警告和报错的含义如下：
 
-- 关闭：禁用此规则
-- 警告：代码检查时输出错误信息，但是不会影响到 exit code
-- 报错：发现错误时，不仅会输出错误信息，而且 exit code 将被设为 1（一般 exit code 不为 0 则表示执行出现错误）
+-   关闭：禁用此规则
+-   警告：代码检查时输出错误信息，但是不会影响到 exit code
+-   报错：发现错误时，不仅会输出错误信息，而且 exit code 将被设为 1（一般 exit code 不为 0 则表示执行出现错误）
 
 ### 检查一个 ts 文件
 
@@ -133,7 +133,7 @@ module.exports = {
 创建一个新文件 `index.ts`，将以下内容复制进去：
 
 ```ts
-var myName = 'Tom';
+var myName = "Tom";
 
 type Foo = {};
 ```
@@ -195,11 +195,7 @@ VSCode 中的 ESLint 插件默认是不会检查 `.ts` 后缀的，需要在「�
 
 ```json
 {
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "typescript"
-    ],
+    "eslint.validate": ["javascript", "javascriptreact", "typescript"],
     "typescript.tsdk": "node_modules/typescript/lib"
 }
 ```
@@ -219,7 +215,7 @@ VSCode 中的 ESLint 插件默认是不会检查 `.ts` 后缀的，需要在「�
         {
             "language": "typescript",
             "autoFix": true
-        },
+        }
     ],
     "typescript.tsdk": "node_modules/typescript/lib"
 }
@@ -228,7 +224,7 @@ VSCode 中的 ESLint 插件默认是不会检查 `.ts` 后缀的，需要在「�
 就可以在保存文件后，自动修复为：
 
 ```ts
-let myName = 'Tom';
+let myName = "Tom";
 
 interface Foo {}
 ```
@@ -261,17 +257,17 @@ module.exports = {
     // 使用单引号
     singleQuote: true,
     // 对象的 key 仅在必要时用引号
-    quoteProps: 'as-needed',
+    quoteProps: "as-needed",
     // jsx 不使用单引号，而使用双引号
     jsxSingleQuote: false,
     // 末尾不需要逗号
-    trailingComma: 'none',
+    trailingComma: "none",
     // 大括号内的首尾需要空格
     bracketSpacing: true,
     // jsx 标签的反尖括号需要换行
     jsxBracketSameLine: false,
     // 箭头函数，只有一个参数的时候，也需要括号
-    arrowParens: 'always',
+    arrowParens: "always",
     // 每个文件格式化的范围是文件的全部内容
     rangeStart: 0,
     rangeEnd: Infinity,
@@ -280,11 +276,11 @@ module.exports = {
     // 不需要自动在文件开头插入 @prettier
     insertPragma: false,
     // 使用默认的折行标准
-    proseWrap: 'preserve',
+    proseWrap: "preserve",
     // 根据显示样式决定 html 要不要折行
-    htmlWhitespaceSensitivity: 'css',
+    htmlWhitespaceSensitivity: "css",
     // 换行符使用 lf
-    endOfLine: 'lf'
+    endOfLine: "lf",
 };
 ```
 
@@ -329,10 +325,7 @@ npm install --save-dev eslint typescript @typescript-eslint/parser @typescript-e
 
 ```js
 module.exports = {
-    extends: [
-        'alloy',
-        'alloy/typescript',
-    ],
+    extends: ["alloy", "alloy/typescript"],
     env: {
         // 您的环境变量（包含多个预定义的全局变量）
         // Your environments (which contains several predefined global variables)
@@ -352,7 +345,7 @@ module.exports = {
     rules: {
         // 自定义您的规则
         // Customize your rules
-    }
+    },
 };
 ```
 
@@ -441,5 +434,5 @@ npm install --save-dev eslint-plugin-react
 
 第一个参数以下划线开头即可，参考 https://github.com/Microsoft/TypeScript/issues/9458
 
-[ESLint]: https://eslint.org/
+[eslint]: https://eslint.org/
 [typescript-eslint]: https://github.com/typescript-eslint/typescript-eslint

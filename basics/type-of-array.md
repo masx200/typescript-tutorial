@@ -13,7 +13,7 @@ let fibonacci: number[] = [1, 1, 2, 3, 5];
 数组的项中**不允许**出现其他的类型：
 
 ```ts
-let fibonacci: number[] = [1, '1', 2, 3, 5];
+let fibonacci: number[] = [1, "1", 2, 3, 5];
 
 // Type 'string' is not assignable to type 'number'.
 ```
@@ -22,7 +22,7 @@ let fibonacci: number[] = [1, '1', 2, 3, 5];
 
 ```ts
 let fibonacci: number[] = [1, 1, 2, 3, 5];
-fibonacci.push('8');
+fibonacci.push("8");
 
 // Argument of type '"8"' is not assignable to parameter of type 'number'.
 ```
@@ -107,10 +107,10 @@ interface IArguments {
 一个比较常见的做法是，用 `any` 表示数组中允许出现任意类型：
 
 ```ts
-let list: any[] = ['xcatliu', 25, { website: 'http://xcatliu.com' }];
+let list: any[] = ["xcatliu", 25, { website: "http://xcatliu.com" }];
 ```
 
 ## 参考
 
-- [Basic Types # Array](http://www.typescriptlang.org/docs/handbook/basic-types.html#array)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Basic%20Types.html#数组)）
-- [Interfaces # Indexable Types](http://www.typescriptlang.org/docs/handbook/interfaces.html#indexable-types)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Interfaces.html#数组类型)）
+-   [Basic Types # Array](http://www.typescriptlang.org/docs/handbook/basic-types.html#array)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Basic%20Types.html#数组)）
+-   [Interfaces # Indexable Types](http://www.typescriptlang.org/docs/handbook/interfaces.html#indexable-types)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Interfaces.html#数组类型)）

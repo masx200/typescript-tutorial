@@ -7,7 +7,7 @@
 以下代码虽然没有指定类型，但是会在编译的时候报错：
 
 ```ts
-let myFavoriteNumber = 'seven';
+let myFavoriteNumber = "seven";
 myFavoriteNumber = 7;
 
 // index.ts(2,1): error TS2322: Type 'number' is not assignable to type 'string'.
@@ -16,7 +16,7 @@ myFavoriteNumber = 7;
 事实上，它等价于：
 
 ```ts
-let myFavoriteNumber: string = 'seven';
+let myFavoriteNumber: string = "seven";
 myFavoriteNumber = 7;
 
 // index.ts(2,1): error TS2322: Type 'number' is not assignable to type 'string'.
@@ -28,10 +28,10 @@ TypeScript 会在没有明确的指定类型的时候推测出一个类型，这
 
 ```ts
 let myFavoriteNumber;
-myFavoriteNumber = 'seven';
+myFavoriteNumber = "seven";
 myFavoriteNumber = 7;
 ```
 
 ## 参考
 
-- [Type Inference](http://www.typescriptlang.org/docs/handbook/type-inference.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Type%20Inference.html)）
+-   [Type Inference](http://www.typescriptlang.org/docs/handbook/type-inference.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Type%20Inference.html)）

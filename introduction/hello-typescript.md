@@ -6,10 +6,10 @@
 
 ```ts
 function sayHello(person: string) {
-    return 'Hello, ' + person;
+    return "Hello, " + person;
 }
 
-let user = 'Tom';
+let user = "Tom";
 console.log(sayHello(user));
 ```
 
@@ -23,9 +23,9 @@ tsc hello.ts
 
 ```js
 function sayHello(person) {
-    return 'Hello, ' + person;
+    return "Hello, " + person;
 }
-var user = 'Tom';
+var user = "Tom";
 console.log(sayHello(user));
 ```
 
@@ -39,14 +39,14 @@ console.log(sayHello(user));
 
 ```ts
 function sayHello(person: string) {
-    if (typeof person === 'string') {
-        return 'Hello, ' + person;
+    if (typeof person === "string") {
+        return "Hello, " + person;
     } else {
-        throw new Error('person is not a string');
+        throw new Error("person is not a string");
     }
 }
 
-let user = 'Tom';
+let user = "Tom";
 console.log(sayHello(user));
 ```
 
@@ -56,7 +56,7 @@ console.log(sayHello(user));
 
 ```ts
 function sayHello(person: string) {
-    return 'Hello, ' + person;
+    return "Hello, " + person;
 }
 
 let user = [0, 1, 2];
@@ -73,7 +73,7 @@ hello.ts:6:22 - error TS2345: Argument of type 'number[]' is not assignable to p
 
 ```js
 function sayHello(person) {
-    return 'Hello, ' + person;
+    return "Hello, " + person;
 }
 var user = [0, 1, 2];
 console.log(sayHello(user));

@@ -15,7 +15,7 @@ function createArray(length: number, value: any): Array<any> {
     return result;
 }
 
-createArray(3, 'x'); // ['x', 'x', 'x']
+createArray(3, "x"); // ['x', 'x', 'x']
 ```
 
 上例中，我们使用了[之前提到过的数组泛型](../basics/type-of-array.md#数组泛型)来定义返回值的类型。
@@ -28,14 +28,14 @@ createArray(3, 'x'); // ['x', 'x', 'x']
 
 ```ts
 function createArray<T>(length: number, value: T): Array<T> {
-    let result: T[] = [];
+    let result: T[] = [];
     for (let i = 0; i < length; i++) {
         result[i] = value;
     }
     return result;
 }
 
-createArray<string>(3, 'x'); // ['x', 'x', 'x']
+createArray<string>(3, "x"); // ['x', 'x', 'x']
 ```
 
 上例中，我们在函数名后添加了 `<T>`，其中 `T` 用来指代任意输入的类型，在后面的输入 `value: T` 和输出 `Array<T>` 中即可使用了。
@@ -51,7 +51,7 @@ function createArray<T>(length: number, value: T): Array<T> {
     return result;
 }
 
-createArray(3, 'x'); // ['x', 'x', 'x']
+createArray(3, "x"); // ['x', 'x', 'x']
 ```
 
 ## 多个类型参数
@@ -63,7 +63,7 @@ function swap<T, U>(tuple: [T, U]): [U, T] {
     return [tuple[1], tuple[0]];
 }
 
-swap([7, 'seven']); // ['seven', 7]
+swap([7, "seven"]); // ['seven', 7]
 ```
 
 上例中，我们定义了一个 `swap` 函数，用来交换输入的元组。
@@ -138,13 +138,13 @@ copyFields(x, { b: 10, d: 20 });
 
 ```ts
 interface SearchFunc {
-  (source: string, subString: string): boolean;
+    (source: string, subString: string): boolean;
 }
 
 let mySearch: SearchFunc;
-mySearch = function(source: string, subString: string) {
+mySearch = function (source: string, subString: string) {
     return source.search(subString) !== -1;
-}
+};
 ```
 
 当然也可以使用含有泛型的接口来定义函数的形状：
@@ -155,15 +155,15 @@ interface CreateArrayFunc {
 }
 
 let createArray: CreateArrayFunc;
-createArray = function<T>(length: number, value: T): Array<T> {
+createArray = function <T>(length: number, value: T): Array<T> {
     let result: T[] = [];
     for (let i = 0; i < length; i++) {
         result[i] = value;
     }
     return result;
-}
+};
 
-createArray(3, 'x'); // ['x', 'x', 'x']
+createArray(3, "x"); // ['x', 'x', 'x']
 ```
 
 进一步，我们可以把泛型参数提前到接口名上：
@@ -174,15 +174,15 @@ interface CreateArrayFunc<T> {
 }
 
 let createArray: CreateArrayFunc<any>;
-createArray = function<T>(length: number, value: T): Array<T> {
+createArray = function <T>(length: number, value: T): Array<T> {
     let result: T[] = [];
     for (let i = 0; i < length; i++) {
         result[i] = value;
     }
     return result;
-}
+};
 
-createArray(3, 'x'); // ['x', 'x', 'x']
+createArray(3, "x"); // ['x', 'x', 'x']
 ```
 
 注意，此时在使用泛型接口的时候，需要定义泛型的类型。
@@ -199,7 +199,9 @@ class GenericNumber<T> {
 
 let myGenericNumber = new GenericNumber<number>();
 myGenericNumber.zeroValue = 0;
-myGenericNumber.add = function(x, y) { return x + y; };
+myGenericNumber.add = function (x, y) {
+    return x + y;
+};
 ```
 
 ## 泛型参数的默认类型
@@ -218,5 +220,5 @@ function createArray<T = string>(length: number, value: T): Array<T> {
 
 ## 参考
 
-- [Generics](http://www.typescriptlang.org/docs/handbook/generics.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/generics.html)）
-- [Generic parameter defaults](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-3.html#generic-parameter-defaults)
+-   [Generics](http://www.typescriptlang.org/docs/handbook/generics.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/generics.html)）
+-   [Generic parameter defaults](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-3.html#generic-parameter-defaults)

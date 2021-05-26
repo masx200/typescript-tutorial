@@ -14,7 +14,7 @@ ECMAScript 标准提供的内置对象有：
 
 ```ts
 let b: Boolean = new Boolean(1);
-let e: Error = new Error('Error occurred');
+let e: Error = new Error("Error occurred");
 let d: Date = new Date();
 let r: RegExp = /[a-z]/;
 ```
@@ -33,9 +33,9 @@ TypeScript 中会经常用到这些类型：
 
 ```ts
 let body: HTMLElement = document.body;
-let allDiv: NodeList = document.querySelectorAll('div');
-document.addEventListener('click', function(e: MouseEvent) {
-  // Do something
+let allDiv: NodeList = document.querySelectorAll("div");
+document.addEventListener("click", function (e: MouseEvent) {
+    // Do something
 });
 ```
 
@@ -48,7 +48,7 @@ document.addEventListener('click', function(e: MouseEvent) {
 当你在使用一些常用的方法的时候，TypeScript 实际上已经帮你做了很多类型判断的工作了，比如：
 
 ```ts
-Math.pow(10, '2');
+Math.pow(10, "2");
 
 // index.ts(1,14): error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'.
 ```
@@ -69,7 +69,7 @@ interface Math {
 再举一个 DOM 中的例子：
 
 ```ts
-document.addEventListener('click', function(e) {
+document.addEventListener("click", function (e) {
     console.log(e.targetCurrent);
 });
 
@@ -79,8 +79,16 @@ document.addEventListener('click', function(e) {
 上面的例子中，`addEventListener` 方法是在 TypeScript 核心库中定义的：
 
 ```ts
-interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEvent {
-    addEventListener(type: string, listener: (ev: MouseEvent) => any, useCapture?: boolean): void;
+interface Document
+    extends Node,
+        GlobalEventHandlers,
+        NodeSelector,
+        DocumentEvent {
+    addEventListener(
+        type: string,
+        listener: (ev: MouseEvent) => any,
+        useCapture?: boolean
+    ): void;
 }
 ```
 
@@ -98,8 +106,8 @@ npm install @types/node --save-dev
 
 ## 参考
 
-- [内置对象][]
-- [TypeScript 核心库的定义文件][]
+-   [内置对象][]
+-   [TypeScript 核心库的定义文件][]
 
 [内置对象]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
-[TypeScript 核心库的定义文件]: https://github.com/Microsoft/TypeScript/tree/master/src/lib
+[typescript 核心库的定义文件]: https://github.com/Microsoft/TypeScript/tree/master/src/lib

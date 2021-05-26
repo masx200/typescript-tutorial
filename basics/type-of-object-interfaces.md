@@ -17,8 +17,8 @@ interface Person {
 }
 
 let tom: Person = {
-    name: 'Tom',
-    age: 25
+    name: "Tom",
+    age: 25,
 };
 ```
 
@@ -35,7 +35,7 @@ interface Person {
 }
 
 let tom: Person = {
-    name: 'Tom'
+    name: "Tom",
 };
 
 // index.ts(6,5): error TS2322: Type '{ name: string; }' is not assignable to type 'Person'.
@@ -51,9 +51,9 @@ interface Person {
 }
 
 let tom: Person = {
-    name: 'Tom',
+    name: "Tom",
     age: 25,
-    gender: 'male'
+    gender: "male",
 };
 
 // index.ts(9,5): error TS2322: Type '{ name: string; age: number; gender: string; }' is not assignable to type 'Person'.
@@ -73,7 +73,7 @@ interface Person {
 }
 
 let tom: Person = {
-    name: 'Tom'
+    name: "Tom",
 };
 ```
 
@@ -84,8 +84,8 @@ interface Person {
 }
 
 let tom: Person = {
-    name: 'Tom',
-    age: 25
+    name: "Tom",
+    age: 25,
 };
 ```
 
@@ -100,9 +100,9 @@ interface Person {
 }
 
 let tom: Person = {
-    name: 'Tom',
+    name: "Tom",
     age: 25,
-    gender: 'male'
+    gender: "male",
 };
 
 // examples/playground/index.ts(9,5): error TS2322: Type '{ name: string; age: number; gender: string; }' is not assignable to type 'Person'.
@@ -121,8 +121,8 @@ interface Person {
 }
 
 let tom: Person = {
-    name: 'Tom',
-    gender: 'male'
+    name: "Tom",
+    gender: "male",
 };
 ```
 
@@ -138,9 +138,9 @@ interface Person {
 }
 
 let tom: Person = {
-    name: 'Tom',
+    name: "Tom",
     age: 25,
-    gender: 'male'
+    gender: "male",
 };
 
 // index.ts(3,5): error TS2411: Property 'age' of type 'number' is not assignable to string index type 'string'.
@@ -155,6 +155,7 @@ let tom: Person = {
 另外，在报错信息中可以看出，此时 `{ name: 'Tom', age: 25, gender: 'male' }` 的类型被推断成了 `{ [x: string]: string | number; name: string; age: number; gender: string; }`，这是联合类型和接口的结合。
 
 一个接口中只能定义一个任意属性。如果接口中有多个类型的属性，则可以在任意属性中使用联合类型：
+
 ```ts
 interface Person {
     name: string;
@@ -163,9 +164,9 @@ interface Person {
 }
 
 let tom: Person = {
-    name: 'Tom',
+    name: "Tom",
     age: 25,
-    gender: 'male'
+    gender: "male",
 };
 ```
 
@@ -183,8 +184,8 @@ interface Person {
 
 let tom: Person = {
     id: 89757,
-    name: 'Tom',
-    gender: 'male'
+    name: "Tom",
+    gender: "male",
 };
 
 tom.id = 9527;
@@ -205,8 +206,8 @@ interface Person {
 }
 
 let tom: Person = {
-    name: 'Tom',
-    gender: 'male'
+    name: "Tom",
+    gender: "male",
 };
 
 tom.id = 89757;
@@ -220,6 +221,6 @@ tom.id = 89757;
 
 第二处是在给 `tom.id` 赋值的时候，由于它是只读属性，所以报错了。
 
-## 参考 
+## 参考
 
-- [Interfaces](http://www.typescriptlang.org/docs/handbook/interfaces.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Interfaces.html)）
+-   [Interfaces](http://www.typescriptlang.org/docs/handbook/interfaces.html)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Interfaces.html)）

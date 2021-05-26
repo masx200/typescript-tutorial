@@ -6,7 +6,7 @@
 
 ```ts
 let myFavoriteNumber: string | number;
-myFavoriteNumber = 'seven';
+myFavoriteNumber = "seven";
 myFavoriteNumber = 7;
 ```
 
@@ -49,7 +49,7 @@ function getString(something: string | number): string {
 
 ```ts
 let myFavoriteNumber: string | number;
-myFavoriteNumber = 'seven';
+myFavoriteNumber = "seven";
 console.log(myFavoriteNumber.length); // 5
 myFavoriteNumber = 7;
 console.log(myFavoriteNumber.length); // 编译时报错
@@ -63,4 +63,4 @@ console.log(myFavoriteNumber.length); // 编译时报错
 
 ## 参考
 
-- [Advanced Types # Union Types](http://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Advanced%20Types.html#联合类型)）
+-   [Advanced Types # Union Types](http://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types)（[中文版](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Advanced%20Types.html#联合类型)）
