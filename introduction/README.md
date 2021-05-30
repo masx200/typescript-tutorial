@@ -1,6 +1,4 @@
----
-prev: README.md
----
+
 
 # 简介
 
@@ -9,3 +7,4 @@ prev: README.md
 -   [什么是 TypeScript](what-is-typescript.md)
 -   [安装 TypeScript](get-typescript.md)
 -   [Hello TypeScript](hello-typescript.md)
+- [为什么选择 TypeScript](why-typescript.md)
