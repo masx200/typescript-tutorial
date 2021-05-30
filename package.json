@@ -4,7 +4,7 @@
     "scripts": {
         "start": "webpack-react-vue-spa-awesome-config start",
         "build": "webpack-react-vue-spa-awesome-config build    ",
-        "format": "prettier --write *.html *.js *.css *.md *.json *.vue */*.ts */*.html */**/*.js */*.css */*.md */*.json */*.vue */**/*.md"
+        "format": "prettier --write *.html *.js *.css *.md *.json *.vue */*.ts */*.html */**/*.js */*.css */*.md */*.json */*.vue */**/*.md *.tsx"
     },
     "description": "TypeScript 入门教程 从 JavaScript 程序员的角度总结思考，循序渐进的理解 TypeScript",
     "main": "index.js",
@@ -18,16 +18,16 @@
     },
     "homepage": "https://github.com/masx200/typescript-tutorial#readme",
     "devDependencies": {
-        "@masx200/markdown-reader": "https://github.com/masx200/markdown-reader.git",
+        "@masx200/markdown-reader": "3.3.0",
+        "@masx200/webpack-react-vue-spa-awesome-config": "3.0.8",
         "@types/highlight.js": "^9.12.3",
-        "@masx200/webpack-react-vue-spa-awesome-config": "2.8.0",
+        "acorn": "7.1.1",
         "babel-eslint": "^10.0.2",
         "eslint": "^6.8.0",
-        "minimist": "1.2.5",
-        "acorn": "7.1.1",
         "eslint-plugin-vue": "^5.2.3",
         "highlight.js": "^10.4.1",
         "jquery": "^3.4.1",
+        "minimist": "1.2.5",
         "serialize-javascript": "^4.0.0",
         "terser": "^4.4.2",
         "terser-webpack-plugin": "^2.2.2",
@@ -35,5 +35,7 @@
         "vue": "^2.6.11",
         "webpack": "4.44.1"
     },
-    "dependencies": {}
+    "dependencies": {
+        "prettier": "^2.3.0"
+    }
 }
